@@ -23,7 +23,7 @@ def plot(train_loss, train_acc, valid_acc, tag):
     ax2.set_ylabel('validation and train accuracy', color='blue')
     ax2.tick_params('y', colors='blue')
     fig.tight_layout()
-    plt.savefig('plot-{}.png'.format(tag))
+    plt.savefig('results/plot-{}.png'.format(tag))
 
 
 def check_data(data, labels):
