@@ -24,7 +24,7 @@ class Cnn(nn.Module):
         self.fc = nn.Sequential(
             nn.Linear(128, 64),
             nn.ReLU(),
-            nn.Dropout(p=.2),
+            nn.Dropout(p=.5),
             nn.Linear(64, 2)
         )
 

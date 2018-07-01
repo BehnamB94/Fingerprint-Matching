@@ -1,5 +1,6 @@
 __pycache__/
 .idea
 
+best_model.pkl
 images/
 dataset/

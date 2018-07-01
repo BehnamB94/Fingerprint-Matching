@@ -4,7 +4,7 @@ from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
 from modules.net import Cnn
-from modules.tools import plot
+from modules.tools import plot, make_xy, make_train_xy
 
 batch_size = 700
 learning_rate = 5e-4
@@ -15,7 +15,7 @@ valid_size = 100  # from 2000
 IMAGE_ROW = 97
 IMAGE_COL = 93
 
-RUN_TAG = 'shuffle-dropout2-{}'.format(batch_size)
+RUN_TAG = 'shuffle-increase-data{}'.format(batch_size)
 
 print('running with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
 
@@ -31,45 +31,20 @@ np.random.seed(0)
 ind = np.random.permutation(range(sample1.shape[0])).astype(np.int)
 sample1 = sample1[ind]
 sample2 = sample2[ind]
-np.random.seed()
 
 # PREPARE TEST SET
-test_x = np.concatenate([sample1[-test_size:], sample2[-test_size:]], axis=1)
-fake_test_x = np.copy(test_x)
-fake_test_x[:, 0, :, :] = fake_test_x[::-1, 0, :, :]
-test_x = np.concatenate([test_x, fake_test_x], axis=0)
-test_y = np.array([1] * test_size + [0] * test_size)
+test_x, test_y = make_xy(sample1[-test_size:], sample2[-test_size:])
 sample1 = sample1[:-test_size]
 sample2 = sample2[:-test_size]
 
 # PREPARE VALIDATION SET
-valid_x = np.concatenate([sample1[-valid_size:], sample2[-valid_size:]], axis=1)
-fake_valid_x = np.copy(valid_x)
-fake_valid_x[:, 0, :, :] = fake_valid_x[::-1, 0, :, :]
-valid_x = np.concatenate([valid_x, fake_valid_x], axis=0)
-valid_y = np.array([1] * valid_size + [0] * valid_size)
+valid_x, valid_y = make_xy(sample1[-valid_size:], sample2[-valid_size:])
 sample1 = sample1[:-valid_size]
 sample2 = sample2[:-valid_size]
 
 # PREPARE TRAIN SET
-train_size = sample1.shape[0]
-train_x = np.zeros((train_size * 3, 2, IMAGE_ROW, IMAGE_COL), dtype=np.uint8)
-train_y = np.array([1] * (train_size * 3) + [0] * (train_size * 3))
-train_x[:train_size, 0, :, :] \
-    = train_x[train_size:-train_size, 0, :, :] \
-    = train_x[train_size:-train_size, 1, :, :] \
-    = sample1[:, 0, :, :]
-train_x[:train_size, 1, :, :] \
-    = train_x[-train_size:, 0, :, :] \
-    = train_x[-train_size:, 1, :, :] \
-    = sample2[:, 0, :, :]
-train_x[train_size:, 1, :20, :] = 255
-fake_train_x = np.copy(train_x)
-fake_train_x[:, 0, :, :] = fake_train_x[::-1, 0, :, :]
-train_x = np.concatenate([train_x, fake_train_x], axis=0)
-# add reverse
-train_x = np.concatenate([train_x, train_x[:, ::-1, :, :]], axis=0)
-train_y = np.concatenate([train_y, train_y], axis=0)
+train_x, train_y = make_train_xy(sample1, sample2)
+np.random.seed()
 
 print('Data Prepared:\n'
       '\tTRAIN:{}\n'
