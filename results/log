@@ -186,3 +186,28 @@ Data Prepared:
 25 	train loss=0.133 	train acc=0.938 	valid acc=0.575 
 	test acc on best model = 0.635
 
+
+# MORE DATA (MISSING BLOCKS + 0.6 IMAGES) AND DROP-OUT=.75
+running with learning rate = 0.0005 and batch size = 700
+Data Prepared:
+	TRAIN:72000
+	VALID:200
+	TEST:800
+1 	train loss=0.079 	train acc=0.961 	valid acc=0.500 	> saved as best model!
+^C
+
+
+# MORE DATA (MISSING BLOCKS + 0.6 IMAGES) AND DROP-OUT=.9
+running with learning rate = 0.0005 and batch size = 700
+Data Prepared:
+	TRAIN:72000
+	VALID:200
+	TEST:800
+1 	train loss=0.271 	train acc=0.846 	valid acc=0.490 	> saved as best model!
+2 	train loss=0.084 	train acc=0.950 	valid acc=0.550 	> saved as best model!
+3 	train loss=0.076 	train acc=0.951 	valid acc=0.500 
+4 	train loss=0.075 	train acc=0.951 	valid acc=0.465 
+5 	train loss=0.075 	train acc=0.951 	valid acc=0.480 
+6 	train loss=0.076 	train acc=0.951 	valid acc=0.490 
+7 	train loss=0.076 	train acc=0.951 	valid acc=0.500 
+^C
