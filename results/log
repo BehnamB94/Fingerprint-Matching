@@ -33,3 +33,29 @@ Data Prepared:
 13 	loss=0.177533 	train acc=0.912 	valid acc=0.660 
 	test acc on best model = 0.63875
 
+
+
+running with learning rate = 0.0005 and batch size = 700
+Data Prepared:
+	TRAIN:18000
+	VALID:200
+	TEST:800
+1 	loss=0.768209 	train acc=0.535 	valid acc=0.535 	> saved as best model!
+2 	loss=0.540788 	train acc=0.741 	valid acc=0.530
+3 	loss=0.361991 	train acc=0.827 	valid acc=0.535
+4 	loss=0.273332 	train acc=0.852 	valid acc=0.600 	> saved as best model!
+5 	loss=0.240830 	train acc=0.860 	valid acc=0.620 	> saved as best model!
+6 	loss=0.230770 	train acc=0.869 	valid acc=0.655 	> saved as best model!
+7 	loss=0.222331 	train acc=0.875 	valid acc=0.610
+8 	loss=0.220330 	train acc=0.879 	valid acc=0.610
+9 	loss=0.212853 	train acc=0.883 	valid acc=0.675 	> saved as best model!
+10 	loss=0.206024 	train acc=0.889 	valid acc=0.665
+11 	loss=0.200853 	train acc=0.894 	valid acc=0.695 	> saved as best model!
+12 	loss=0.201551 	train acc=0.893 	valid acc=0.685
+13 	loss=0.202399 	train acc=0.893 	valid acc=0.655
+14 	loss=0.194890 	train acc=0.898 	valid acc=0.665
+15 	loss=0.188133 	train acc=0.902 	valid acc=0.700 	> saved as best model!
+16 	loss=0.181892 	train acc=0.907 	valid acc=0.670
+17 	loss=0.195530 	train acc=0.900 	valid acc=0.650
+18 	loss=0.587595 	train acc=0.747 	valid acc=0.565
+	test acc on best model = 0.64125
