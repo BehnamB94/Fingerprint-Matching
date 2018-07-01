@@ -15,6 +15,8 @@ valid_size = 100  # from 2000
 IMAGE_ROW = 97
 IMAGE_COL = 93
 
+RUN_TAG = '700'
+
 print('running with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
 
 #######################################################################################
@@ -134,4 +136,4 @@ for features, labels in test_loader:  # For each batch, do:
     outputs = net(features)
     test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
 print('\ttest acc on best model =', test_correct.item() / test_x.shape[0])
-plot(plot_train_loss, plot_train_acc, plot_valid_acc, tag='test')
+plot(plot_train_loss, plot_train_acc, plot_valid_acc, tag=RUN_TAG)
