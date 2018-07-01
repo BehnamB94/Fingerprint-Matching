@@ -15,7 +15,7 @@ valid_size = 100  # from 2000
 IMAGE_ROW = 97
 IMAGE_COL = 93
 
-RUN_TAG = '700'
+RUN_TAG = batch_size
 
 print('running with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
 
@@ -25,6 +25,13 @@ print('running with learning rate = {}'.format(learning_rate), 'and batch size =
 loaded = np.load('dataset/images.npz')
 sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+
+# SHUFFLE DATA
+np.random.seed(0)
+ind = np.random.permutation(range(sample1.shape[0])).astype(np.int)
+sample1 = sample1[ind]
+sample2 = sample2[ind]
+np.random.seed()
 
 # PREPARE TEST SET
 test_x = np.concatenate([sample1[-test_size:], sample2[-test_size:]], axis=1)
