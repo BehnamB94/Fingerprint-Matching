@@ -151,3 +151,38 @@ Data Prepared:
 1 	train loss=0.226 	train acc=0.907 	valid acc=0.500 	> saved as best model!
 2 	train loss=0.000 	train acc=1.000 	valid acc=0.500 
 ^C
+
+
+# DATA LIKE OLDER
+running with learning rate = 0.0005 and batch size = 700
+Data Prepared:
+	TRAIN:18000
+	VALID:200
+	TEST:800
+1 	train loss=0.670 	train acc=0.607 	valid acc=0.500 	> saved as best model!
+2 	train loss=0.459 	train acc=0.800 	valid acc=0.530 	> saved as best model!
+3 	train loss=0.332 	train acc=0.838 	valid acc=0.555 	> saved as best model!
+4 	train loss=0.283 	train acc=0.853 	valid acc=0.595 	> saved as best model!
+5 	train loss=0.256 	train acc=0.864 	valid acc=0.575 
+6 	train loss=0.302 	train acc=0.841 	valid acc=0.585 
+7 	train loss=0.248 	train acc=0.865 	valid acc=0.555 
+8 	train loss=0.232 	train acc=0.872 	valid acc=0.550 
+9 	train loss=0.224 	train acc=0.876 	valid acc=0.580 
+10 	train loss=0.217 	train acc=0.881 	valid acc=0.605 	> saved as best model!
+11 	train loss=0.218 	train acc=0.879 	valid acc=0.565 
+12 	train loss=0.210 	train acc=0.884 	valid acc=0.575 
+13 	train loss=0.202 	train acc=0.892 	valid acc=0.590 
+14 	train loss=0.197 	train acc=0.891 	valid acc=0.570 
+15 	train loss=0.192 	train acc=0.898 	valid acc=0.605 
+16 	train loss=0.188 	train acc=0.902 	valid acc=0.565 
+17 	train loss=0.181 	train acc=0.906 	valid acc=0.620 	> saved as best model!
+18 	train loss=0.176 	train acc=0.909 	valid acc=0.595 
+19 	train loss=0.173 	train acc=0.913 	valid acc=0.605 
+20 	train loss=0.163 	train acc=0.918 	valid acc=0.580 
+21 	train loss=0.174 	train acc=0.913 	valid acc=0.605 
+22 	train loss=0.151 	train acc=0.925 	valid acc=0.600 
+23 	train loss=0.151 	train acc=0.927 	valid acc=0.575 
+24 	train loss=0.147 	train acc=0.929 	valid acc=0.635 	> saved as best model!
+25 	train loss=0.133 	train acc=0.938 	valid acc=0.575 
+	test acc on best model = 0.635
+
