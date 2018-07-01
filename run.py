@@ -15,7 +15,7 @@ valid_size = 100  # from 2000
 IMAGE_ROW = 97
 IMAGE_COL = 93
 
-RUN_TAG = batch_size
+RUN_TAG = 'shuffle-dropout2-{}'.format(batch_size)
 
 print('running with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
 
@@ -123,7 +123,7 @@ for epoch in range(max_epochs):
         torch.save(net.state_dict(), 'best_model.pkl')
         best_valid_acc = valid_acc
         saved = True
-    print(epoch + 1, '\tloss={:.6f}'.format(train_loss),
+    print(epoch + 1, '\ttrain loss={:.3f}'.format(train_loss),
           '\ttrain acc={:.3f}'.format(train_acc),
           '\tvalid acc={:.3f}'.format(valid_acc),
           '\t> saved as best model!' if saved else '')
