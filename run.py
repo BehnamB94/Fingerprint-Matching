@@ -22,7 +22,7 @@ print('running with learning rate = {}'.format(learning_rate), 'and batch size =
 #######################################################################################
 # PREPARE DATA
 #######################################################################################
-loaded = np.load('dataset/images.npz')
+loaded = np.load('dataset/images_97_93.npz')
 sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 

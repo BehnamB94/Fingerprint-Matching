@@ -53,7 +53,7 @@ def save_train_test_label():
         second_arr[i] = second_dict[tag]
         label_arr[i] = label_dict[tag]
 
-    path = '../dataset/images.npz'
+    path = '../dataset/images_{}_{}.npz'.format(NEW_IMAGE_ROW, NEW_IMAGE_COL)
     np.savez_compressed(path, sample1=first_arr, sample2=second_arr, label=label_arr)
     return path
 
