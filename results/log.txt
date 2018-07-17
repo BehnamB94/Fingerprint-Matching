@@ -1,0 +1,13 @@
+running with learning rate = 0.0001 and batch size = 700
+Data Prepared:
+        TRAIN:108000
+        VALID:200
+        TEST:800
+1       train loss=0.308        train acc=0.832         valid loss=2.737	valid acc=0.500         > saved as best model!
+2       train loss=0.211        train acc=0.885         valid loss=3.943	valid acc=0.500
+3       train loss=0.204        train acc=0.889         valid loss=4.360	valid acc=0.500
+4       train loss=0.196        train acc=0.895         valid loss=4.339	valid acc=0.500
+5       train loss=0.191        train acc=0.899         valid loss=4.406	valid acc=0.500
+
+
+
