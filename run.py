@@ -82,7 +82,7 @@ for epoch in range(max_epochs):
     valid_correct = 0
     for features, labels in train_loader:  # For each batch, do:
         features = torch.autograd.Variable(features.float())
-        labels = torch.autograd.Variable(labels)
+        labels = torch.autograd.Variable(labels.long())
         outputs = net(features)
         train_correct += torch.sum(torch.argmax(outputs, 1) == labels)
         loss = loss_fn(outputs, labels)
@@ -93,7 +93,7 @@ for epoch in range(max_epochs):
 
     for features, labels in valid_loader:  # For each batch, do:
         features = torch.autograd.Variable(features.float())
-        labels = torch.autograd.Variable(labels)
+        labels = torch.autograd.Variable(labels.long())
         # valid_loss_list.append(.5)
         outputs = net(features)
         valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
