@@ -69,8 +69,8 @@ def make_train_xy(sample1, sample2):
 
     # SMALLER DATABASE
     x_list.append(combine_pairs([sample1, sample2]))
-    x_list.append(combine_pairs([sample1, p11]))
-    x_list.append(combine_pairs([sample2, p22]))
+    # x_list.append(combine_pairs([sample1, p11]))
+    # x_list.append(combine_pairs([sample2, p22]))
 
     x = np.concatenate(x_list, axis=0)
     fake_x = np.copy(x)

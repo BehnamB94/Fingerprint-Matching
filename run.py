@@ -15,8 +15,8 @@ max_epochs = 50
 test_size = 400  # from 2000
 valid_size = 100  # from 2000
 
-IMAGE_ROW = 97
-IMAGE_COL = 93
+IMAGE_ROW = 181
+IMAGE_COL = 181
 
 # RUN_TAG = 'shuffle-increase-data-{}'.format(batch_size)
 RUN_TAG = 'TEST'
@@ -26,7 +26,7 @@ print('running with learning rate = {}'.format(learning_rate), 'and batch size =
 #######################################################################################
 # PREPARE DATA
 #######################################################################################
-loaded = np.load('dataset/images_97_93.npz')
+loaded = np.load('dataset/images_181_181.npz')
 sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 # check_sample(sample1[-20:], sample2[-20:])
