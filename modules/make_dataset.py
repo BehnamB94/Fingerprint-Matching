@@ -4,11 +4,11 @@ import numpy as np
 from PIL import Image
 from scipy.misc import imresize
 
-FOLDER_NAME = '../images/'
+FOLDER_NAME = '../dataset/NIST-DB4/'
 DATA_LABEL = ['A', 'L', 'R', 'T', 'W']
 USE_REMOVE_LIST = False
-NEW_IMAGE_ROW = 97
-NEW_IMAGE_COL = 93
+NEW_IMAGE_ROW = 181
+NEW_IMAGE_COL = 181
 
 
 def save_train_test_label():

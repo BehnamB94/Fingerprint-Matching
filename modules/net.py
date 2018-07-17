@@ -17,14 +17,14 @@ class Cnn(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2, padding=1),
 
-            nn.Conv2d(64, 128, kernel_size=5, stride=1),
+            nn.Conv2d(64, 128, kernel_size=4, stride=1),
             nn.ReLU(),
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(128, 64),
+            nn.Linear(4 * 128, 64),
             nn.ReLU(),
-            nn.Dropout(p=.9),
+            nn.Dropout(p=.5),
             nn.Linear(64, 2)
         )
 

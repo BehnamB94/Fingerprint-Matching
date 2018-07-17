@@ -55,20 +55,22 @@ def make_train_xy(sample1, sample2):
     assert sample1.shape == sample2.shape
 
     x_list = list()
-    mb1 = add_miss_block(sample1)
-    mb2 = add_miss_block(sample2)
-    x_list.append(combine_pairs([sample1, mb1, sample2, mb2]))
-    # x_list.append(combine_pairs([sample1, sample2]))
+    # mb1 = add_miss_block(sample1)
+    # mb2 = add_miss_block(sample2)
+    # x_list.append(combine_pairs([sample1, mb1, sample2, mb2]))
 
-    # p11, p12 = cut_image(sample1, .8)
-    # p21, p22 = cut_image(sample2, .8)
+    p11, p12 = cut_image(sample1, .8)
+    p21, p22 = cut_image(sample2, .8)
     # x_list.append(combine_pairs([p11, p12, p21, p22]))
-    # x_list.append(combine_pairs([sample1, p11]))
-    # x_list.append(combine_pairs([sample2, p22]))
 
-    p11, p12 = cut_image(sample1, .6)
-    p21, p22 = cut_image(sample2, .6)
-    x_list.append(combine_pairs([p11, p12, p21, p22]))
+    # p11, p12 = cut_image(sample1, .6)
+    # p21, p22 = cut_image(sample2, .6)
+    # x_list.append(combine_pairs([p11, p12, p21, p22]))
+
+    # SMALLER DATABASE
+    x_list.append(combine_pairs([sample1, sample2]))
+    x_list.append(combine_pairs([sample1, p11]))
+    x_list.append(combine_pairs([sample2, p22]))
 
     x = np.concatenate(x_list, axis=0)
     fake_x = np.copy(x)
@@ -83,12 +85,13 @@ def make_train_xy(sample1, sample2):
     return x, y
 
 
-def plot(train_loss, train_acc, valid_acc, tag):
+def plot(train_loss, valid_loss, train_acc, valid_acc, tag):
     fig, ax1 = plt.subplots()
     x_range = np.arange(len(train_acc)) + 1
     ax1.plot(x_range, train_loss, 'red')
+    ax1.plot(x_range, valid_loss, 'r--')
     ax1.set_xlabel('epoch')
-    ax1.set_ylabel('train loss', color='red')
+    ax1.set_ylabel('validation and train loss', color='red')
     ax1.tick_params('y', colors='red')
     ax2 = ax1.twinx()
     ax2.plot(x_range, train_acc, 'blue')
