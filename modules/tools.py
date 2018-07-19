@@ -55,22 +55,22 @@ def make_train_xy(sample1, sample2):
     assert sample1.shape == sample2.shape
 
     x_list = list()
-    mb1 = add_miss_block(sample1)
-    mb2 = add_miss_block(sample2)
-    x_list.append(combine_pairs([sample1, mb1, sample2, mb2]))
+    # mb1 = add_miss_block(sample1)
+    # mb2 = add_miss_block(sample2)
+    # x_list.append(combine_pairs([sample1, mb1, sample2, mb2]))
 
     p11, p12 = cut_image(sample1, .8)
     p21, p22 = cut_image(sample2, .8)
-    x_list.append(combine_pairs([p11, p12, p21, p22]))
+    # x_list.append(combine_pairs([p11, p12, p21, p22]))
 
     # p11, p12 = cut_image(sample1, .6)
     # p21, p22 = cut_image(sample2, .6)
     # x_list.append(combine_pairs([p11, p12, p21, p22]))
 
     # SMALLER DATABASE
-    # x_list.append(combine_pairs([sample1, sample2]))
-    # x_list.append(combine_pairs([sample1, p11]))
-    # x_list.append(combine_pairs([sample2, p22]))
+    x_list.append(combine_pairs([sample1, sample2]))
+    x_list.append(combine_pairs([sample1, p11]))
+    x_list.append(combine_pairs([sample2, p22]))
 
     x = np.concatenate(x_list, axis=0)
     fake_x = np.copy(x)
