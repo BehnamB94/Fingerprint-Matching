@@ -1,6 +1,6 @@
 # pre-process images
-# increase features that extracts from image
-resize input images
+increase features that extracts from image
+# resize input images
 # is data correct?
 download fvc2006
 # early stopping using validation loss
