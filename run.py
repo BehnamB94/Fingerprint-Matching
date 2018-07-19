@@ -137,7 +137,7 @@ net.eval()
 test_correct = 0
 for features, labels in test_loader:  # For each batch, do:
     features = torch.autograd.Variable(features.float())
-    labels = torch.autograd.Variable(labels)
+    labels = torch.autograd.Variable(labels.long())
     outputs = net(features)
     test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
 print('\ttest acc on best model =', test_correct.item() / test_x.shape[0])
