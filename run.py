@@ -32,32 +32,27 @@ print(RUN_TAG, '\nrunning with learning rate = {}'.format(learning_rate), 'and b
 loaded = np.load('dataset/images_181_181.npz')
 sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+sample_list = [sample1, sample2]
 # check_sample(sample1[-20:], sample2[-20:])
 
 # SHUFFLE DATA
 np.random.seed(0)
-ind = np.random.permutation(range(sample1.shape[0])).astype(np.int)
-sample1 = sample1[ind]
-sample2 = sample2[ind]
+ind = np.random.permutation(range(sample_list[0].shape[0])).astype(np.int)
+for i in range(len(sample_list)):
+    sample_list[i] = sample_list[i][ind]
 
 # PREPARE TEST SET
-test_x, test_y = make_xy(sample1[-test_size:], sample2[-test_size:])
-sample1 = sample1[:-test_size]
-sample2 = sample2[:-test_size]
-
-# PRE-PROCESS IMAGES .astype(np.int16)
-# dataset_mean = int(np.mean(sample1) + np.mean(sample2)) // 2
-# sample1 -= dataset_mean
-# sample2 -= dataset_mean
-# test_x -= dataset_mean
+test_x, test_y = make_xy([s[-test_size:] for s in sample_list])
+for i in range(len(sample_list)):
+    sample_list[i] = sample_list[i][:-test_size]
 
 # PREPARE VALIDATION SET
-valid_x, valid_y = make_xy(sample1[-valid_size:], sample2[-valid_size:])
-sample1 = sample1[:-valid_size]
-sample2 = sample2[:-valid_size]
+valid_x, valid_y = make_xy([s[-valid_size:] for s in sample_list])
+for i in range(len(sample_list)):
+    sample_list[i] = sample_list[i][:-valid_size]
 
 # PREPARE TRAIN SET
-train_x, train_y = make_train_xy(sample1, sample2)
+train_x, train_y = make_train_xy(sample_list)
 # check_data(train_x[-20:], train_y[-20:])
 # exit()
 np.random.seed()
@@ -66,7 +61,7 @@ print('Data Prepared:\n'
       '\tTRAIN:{}\n'
       '\tVALID:{}\n'
       '\tTEST:{}'.format(train_x.shape[0], valid_x.shape[0], test_x.shape[0]))
-
+exit()
 #######################################################################################
 # DO TRAIN
 #######################################################################################

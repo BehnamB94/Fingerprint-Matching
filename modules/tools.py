@@ -2,9 +2,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def make_xy(sample1, sample2):
-    size = sample1.shape[0]
-    x = np.concatenate([sample1, sample2], axis=1)
+def make_xy(sample_list):
+    size = sample_list[0].shape[0]
+    x = np.concatenate(sample_list, axis=1)
     fake_x = np.copy(x)
     fake_x[:, 0, :, :] = fake_x[::-1, 0, :, :]
     x = np.concatenate([x, fake_x], axis=0)
@@ -51,26 +51,27 @@ def combine_pairs(parts):
     return np.concatenate(res, axis=0)
 
 
-def make_train_xy(sample1, sample2):
-    assert sample1.shape == sample2.shape
-
+def make_train_xy(sample_list):
+    for i in range(len(sample_list) - 1):
+        assert sample_list[i].shape == sample_list[i + 1].shape
     x_list = list()
-    # mb1 = add_miss_block(sample1)
-    # mb2 = add_miss_block(sample2)
-    # x_list.append(combine_pairs([sample1, mb1, sample2, mb2]))
 
-    p11, p12 = cut_image(sample1, .8)
-    p21, p22 = cut_image(sample2, .8)
-    # x_list.append(combine_pairs([p11, p12, p21, p22]))
+    # mb_list = [add_miss_block(s) for s in sample_list]
 
-    # p11, p12 = cut_image(sample1, .6)
-    # p21, p22 = cut_image(sample2, .6)
-    # x_list.append(combine_pairs([p11, p12, p21, p22]))
+    tuple_list = [cut_image(s, .8) for s in sample_list]
+    p8_list = list()
+    for u, l in tuple_list: p8_list += [u, l]
+    # x_list.append(combine_pairs(p8_list))
+
+    # tuple_list = [cut_image(s, .6) for s in sample_list]
+    # p6_list = list()
+    # for u, l in tuple_list: p6_list += [u, l]
+    # x_list.append(combine_pairs(p6_list))
 
     # SMALLER DATABASE
-    x_list.append(combine_pairs([sample1, sample2]))
-    x_list.append(combine_pairs([sample1, p11]))
-    x_list.append(combine_pairs([sample2, p22]))
+    x_list.append(combine_pairs([sample_list[0], sample_list[1]]))
+    x_list.append(combine_pairs([sample_list[0], p8_list[0]]))
+    x_list.append(combine_pairs([sample_list[1], p8_list[2]]))
 
     x = np.concatenate(x_list, axis=0)
     fake_x = np.copy(x)
