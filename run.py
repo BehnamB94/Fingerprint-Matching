@@ -32,7 +32,7 @@ sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
 # check_sample(sample1[-20:], sample2[-20:])
 
 # SHUFFLE DATA
-# np.random.seed(0)
+np.random.seed(0)
 ind = np.random.permutation(range(sample1.shape[0])).astype(np.int)
 sample1 = sample1[ind]
 sample2 = sample2[ind]
