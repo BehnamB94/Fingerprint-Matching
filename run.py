@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
@@ -18,10 +20,11 @@ valid_size = 100  # from 2000
 IMAGE_ROW = 181
 IMAGE_COL = 181
 
-# RUN_TAG = 'shuffle-increase-data-{}'.format(batch_size)
-RUN_TAG = 'TEST'
-
-print('running with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
+if len(sys.argv) > 1:
+    RUN_TAG = sys.argv[1]
+else:
+    RUN_TAG = 'TEST'
+print(RUN_TAG, '\nrunning with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
 
 #######################################################################################
 # PREPARE DATA
