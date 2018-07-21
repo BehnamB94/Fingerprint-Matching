@@ -4,7 +4,9 @@ import numpy as np
 
 def make_xy(sample_list):
     size = sample_list[0].shape[0]
-    x = np.concatenate(sample_list, axis=1)
+    x_list = list()
+    x_list.append(combine_pairs(sample_list))
+    x = np.concatenate(x_list, axis=0)
     fake_x = np.copy(x)
     fake_x[:, 0, :, :] = fake_x[::-1, 0, :, :]
     x = np.concatenate([x, fake_x], axis=0)
@@ -57,6 +59,7 @@ def make_train_xy(sample_list):
     x_list = list()
 
     # mb_list = [add_miss_block(s) for s in sample_list]
+    # x_list.append(combine_pairs(sample_list + mb_list))
 
     tuple_list = [cut_image(s, .8) for s in sample_list]
     p8_list = list()
