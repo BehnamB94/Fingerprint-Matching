@@ -3,10 +3,10 @@ import numpy as np
 
 
 def make_xy(sample_list):
-    size = sample_list[0].shape[0]
     x_list = list()
     x_list.append(combine_pairs(sample_list))
     x = np.concatenate(x_list, axis=0)
+    size = x.shape[0]
     fake_x = np.copy(x)
     fake_x[:, 0, :, :] = fake_x[::-1, 0, :, :]
     x = np.concatenate([x, fake_x], axis=0)
