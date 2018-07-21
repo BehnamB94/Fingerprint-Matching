@@ -77,8 +77,15 @@ def make_train_xy(sample_list):
     # x_list.append(combine_pairs([sample_list[1], p8_list[2]]))
 
     x = np.concatenate(x_list, axis=0)
-    fake_x = np.copy(x)
-    fake_x[:, 0, :, :] = fake_x[::-1, 0, :, :]
+    x_sizes = [0] + [len(i) for i in x_list]
+    fake_x = np.zeros_like(x)
+    for i in range(len(x_sizes) - 1):
+        x_sizes[i + 1] += x_sizes[i]
+        s = x_sizes[i]
+        e = x_sizes[i + 1]
+        tmp = np.copy(x[s:e, :, :, :])
+        tmp[:, 0, :, :] = tmp[::-1, 0, :, :]
+        fake_x[s:e, :, :, :] = tmp
 
     y = np.array([1] * x.shape[0] + [0] * x.shape[0])
     x = np.concatenate([x, fake_x], axis=0)
