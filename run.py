@@ -14,9 +14,6 @@ max_loss_diff = 0.04
 min_epochs = 20
 max_epochs = 50
 
-test_size = 400  # from 2000
-valid_size = 100  # from 2000
-
 IMAGE_ROW = 181
 IMAGE_COL = 181
 
@@ -29,11 +26,22 @@ print(RUN_TAG, '\nrunning with learning rate = {}'.format(learning_rate), 'and b
 #######################################################################################
 # PREPARE DATA
 #######################################################################################
-loaded = np.load('dataset/images_181_181.npz')
-sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
-sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
-sample_list = [sample1, sample2]
+
+# NIST-DB4
+# loaded = np.load('dataset/images_181_181.npz')
+# sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+# sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+# sample_list = [sample1, sample2]
+# test_size = 400  # from 2000
+# valid_size = 100  # from 2000
 # check_sample(sample1[-20:], sample2[-20:])
+
+# FVC2002
+loaded = np.load('dataset/fvc_181_181.npz')
+loaded = loaded['DB1']
+sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
+test_size = 10  # from 110
+valid_size = 10  # from 110
 
 # SHUFFLE DATA
 np.random.seed(0)
