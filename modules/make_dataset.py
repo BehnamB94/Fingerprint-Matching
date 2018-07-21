@@ -2,9 +2,10 @@ import os
 
 import numpy as np
 from PIL import Image
+from matplotlib.image import imread
 from scipy.misc import imresize
 
-FOLDER_NAME = '../dataset/NIST-DB4/'
+FOLDER_NAME = 'dataset/NIST-DB4/'
 DATA_LABEL = ['A', 'L', 'R', 'T', 'W']
 USE_REMOVE_LIST = False
 NEW_IMAGE_ROW = 181
@@ -26,7 +27,7 @@ def save_train_test_label():
             tag = p[1:5]
             if p.endswith('png'):
                 path = os.path.join(FOLDER_NAME, folder, p)
-                im = read_image_file(path)
+                im = imread(path)
                 im = imresize(im[:-32, :], (NEW_IMAGE_ROW, NEW_IMAGE_COL))
                 im = im.reshape((NEW_IMAGE_ROW * NEW_IMAGE_COL,))
                 if p.startswith('f'):
@@ -53,23 +54,16 @@ def save_train_test_label():
         second_arr[i] = second_dict[tag]
         label_arr[i] = label_dict[tag]
 
-    path = '../dataset/images_{}_{}.npz'.format(NEW_IMAGE_ROW, NEW_IMAGE_COL)
+    path = 'dataset/images_{}_{}.npz'.format(NEW_IMAGE_ROW, NEW_IMAGE_COL)
     np.savez_compressed(path, sample1=first_arr, sample2=second_arr, label=label_arr)
     return path
 
 
 def get_remove_set():
     res = set()
-    for line in open('remove_list.txt'):
+    for line in open('modules/remove_list.txt'):
         res.add(line.strip())
     return res
-
-
-def read_image_file(path):
-    im = Image.open(path)
-    pixels = im.getdata()
-    data = np.array(list(pixels))
-    return data.reshape((512, 512))
 
 
 if __name__ == '__main__': save_train_test_label()
