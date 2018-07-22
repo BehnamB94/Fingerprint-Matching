@@ -156,5 +156,5 @@ for features, labels in test_loader:  # For each batch, do:
     labels = torch.autograd.Variable(labels.long())
     outputs = net(features)
     test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-print_and_log('\ttest acc on best model =', test_correct.item() / test_x.shape[0])
+print_and_log('\ttest acc on best model =', str(test_correct.item() / test_x.shape[0]))
 plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
