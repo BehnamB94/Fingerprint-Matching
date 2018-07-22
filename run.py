@@ -36,23 +36,23 @@ print_and_log(args.TAG, '(continue)' if args.CONT is not None else '',
 #######################################################################################
 # PREPARE DATA
 #######################################################################################
-
+#'''
 # NIST-DB4
-# loaded = np.load('dataset/images_181_181.npz')
-# sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
-# sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
-# sample_list = [sample1, sample2]
-# test_size = 400  # from 2000
-# valid_size = 100  # from 2000
+loaded = np.load('dataset/images_181_181.npz')
+sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+sample_list = [sample1, sample2]
+test_size = 400  # from 2000
+valid_size = 100  # from 2000
 # check_sample(sample1[-20:], sample2[-20:])
-
+'''
 # FVC2002
 loaded = np.load('dataset/fvc_181_181.npz')
 loaded = loaded['DB1']
 sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
 test_size = 10  # from 110
 valid_size = 10  # from 110
-
+#'''
 # SHUFFLE DATA
 np.random.seed(0)
 ind = np.random.permutation(range(sample_list[0].shape[0])).astype(np.int)
