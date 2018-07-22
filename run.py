@@ -133,7 +133,7 @@ for epoch in range(start_epoch, max_epochs):
     if valid_loss == min(plot_valid_loss):
         torch.save(net.state_dict(), 'results/model-{}.pkl'.format(args.TAG))
         saved = True
-    print_and_log(epoch + 1,
+    print_and_log(str(epoch + 1),
                   '\ttrain loss={:.3f}'.format(train_loss),
                   '\ttrain acc={:.3f}'.format(train_acc),
                   '\tvalid loss={:.3f}'.format(valid_loss),
