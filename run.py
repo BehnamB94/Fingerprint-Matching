@@ -1,5 +1,4 @@
-import sys
-
+import argparse
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
@@ -17,11 +16,12 @@ max_epochs = 50
 IMAGE_ROW = 181
 IMAGE_COL = 181
 
-if len(sys.argv) > 1:
-    RUN_TAG = sys.argv[1]
-else:
-    RUN_TAG = 'TEST'
-print(RUN_TAG, '\nrunning with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
+parser = argparse.ArgumentParser()
+parser.add_argument('-tag', dest='TAG', default='TEST', help='set a tag (use for save results)')
+parser.add_argument('-cont', dest='CONT', type=int, default=None, help='continue last run from specific epoch')
+args = parser.parse_args()
+print(args.TAG, '(continue)' if args.CONT is not None else '',
+      '\nrunning with learning rate = {}'.format(learning_rate), 'and batch size = {}'.format(batch_size))
 
 #######################################################################################
 # PREPARE DATA
@@ -77,11 +77,15 @@ train_loader = DataLoader(ImageDataset(train_x, train_y), batch_size=batch_size,
 valid_loader = DataLoader(ImageDataset(valid_x, valid_y), batch_size=batch_size, shuffle=True)
 
 net = Cnn()
+start_epoch = 0
+if args.CONT is not None:
+    net.load_state_dict(torch.load('model-{}.pkl'.format(args.TAG)))
+    start_epoch = args.CONT
 loss_fn = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
 plot_train_loss, plot_train_acc, plot_valid_loss, plot_valid_acc = [], [], [], []
-for epoch in range(max_epochs):
+for epoch in range(start_epoch, max_epochs):
     train_loss_list = list()
     valid_loss_list = list()
     train_correct = 0
@@ -100,7 +104,6 @@ for epoch in range(max_epochs):
     for features, labels in valid_loader:  # For each batch, do:
         features = torch.autograd.Variable(features.float())
         labels = torch.autograd.Variable(labels.long())
-        # valid_loss_list.append(.5)
         outputs = net(features)
         valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
         loss = loss_fn(outputs, labels)
@@ -118,7 +121,7 @@ for epoch in range(max_epochs):
     plot_valid_acc.append(valid_acc)
 
     if valid_loss == min(plot_valid_loss):
-        torch.save(net.state_dict(), 'best_model.pkl')
+        torch.save(net.state_dict(), 'model-{}.pkl'.format(args.TAG))
         saved = True
     print(epoch + 1,
           '\ttrain loss={:.3f}'.format(train_loss),
@@ -135,7 +138,7 @@ for epoch in range(max_epochs):
 #######################################################################################
 test_loader = DataLoader(ImageDataset(test_x, test_y), batch_size=batch_size, shuffle=True)
 
-net.load_state_dict(torch.load('best_model.pkl'))
+net.load_state_dict(torch.load('model-{}.pkl'.format(args.TAG)))
 net.eval()
 test_correct = 0
 for features, labels in test_loader:  # For each batch, do:
@@ -144,4 +147,4 @@ for features, labels in test_loader:  # For each batch, do:
     outputs = net(features)
     test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
 print('\ttest acc on best model =', test_correct.item() / test_x.shape[0])
-plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=RUN_TAG)
+plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
