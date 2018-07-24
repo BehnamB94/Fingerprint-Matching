@@ -36,7 +36,7 @@ print_and_log(args.TAG, '(continue)' if args.CONT is not None else '',
 #######################################################################################
 # PREPARE DATA
 #######################################################################################
-#'''
+'''
 # NIST-DB4
 loaded = np.load('dataset/images_181_181.npz')
 sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
@@ -48,7 +48,7 @@ valid_size = 100  # from 2000
 '''
 # FVC2002
 loaded = np.load('dataset/fvc_181_181.npz')
-loaded = loaded['DB1']
+loaded = loaded['DB4']
 sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
 test_size = 10  # from 110
 valid_size = 10  # from 110
