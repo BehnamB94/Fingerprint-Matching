@@ -24,7 +24,7 @@ def add_miss_block(samples, block_size=10, blocks_on_image=3):
         rand_r = np.random.randint(image_rows - block_size, size=size)
         rand_c = np.random.randint(image_columns - block_size, size=size)
         for i, (r, c) in enumerate(zip(rand_r, rand_c)):
-            res[i, 0, r:r + block_size, c:c + block_size] = 0
+            res[i, 0, r:r + block_size, c:c + block_size] = 255
     return res
 
 
@@ -34,10 +34,10 @@ def cut_image(samples, ratio):
     useless_rows = image_rows - new_rows
     top_gap = useless_rows // 2
 
-    upper_res = np.zeros_like(samples)
+    upper_res = np.ones_like(samples) * 255
     upper_res[:, :, top_gap:top_gap + new_rows, :] = samples[:, :, :-useless_rows, :]
 
-    lower_res = np.zeros_like(samples)
+    lower_res = np.ones_like(samples) * 255
     lower_res[:, :, top_gap:top_gap + new_rows, :] = samples[:, :, useless_rows:, :]
     return upper_res, lower_res
 
