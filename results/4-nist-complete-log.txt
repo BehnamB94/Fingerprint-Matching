@@ -1,0 +1,29 @@
+nist-complete  
+running with learning rate = 0.0001 and batch size = 700
+Data Prepared:
+	TRAIN:108000
+	VALID:200
+	TEST:800
+1 	train loss=0.679 	train acc=0.585 	valid loss=0.748 	valid acc=0.510 	> saved as best model!
+2 	train loss=0.602 	train acc=0.663 	valid loss=0.730 	valid acc=0.535 	> saved as best model!
+3 	train loss=0.578 	train acc=0.682 	valid loss=0.680 	valid acc=0.540 	> saved as best model!
+4 	train loss=0.561 	train acc=0.696 	valid loss=0.698 	valid acc=0.590 
+5 	train loss=0.551 	train acc=0.703 	valid loss=0.686 	valid acc=0.580 
+6 	train loss=0.538 	train acc=0.714 	valid loss=0.722 	valid acc=0.585 
+7 	train loss=0.531 	train acc=0.720 	valid loss=0.714 	valid acc=0.600 
+8 	train loss=0.520 	train acc=0.729 	valid loss=0.665 	valid acc=0.600 	> saved as best model!
+9 	train loss=0.514 	train acc=0.733 	valid loss=0.715 	valid acc=0.585 
+10 	train loss=0.503 	train acc=0.741 	valid loss=0.679 	valid acc=0.625 
+11 	train loss=0.491 	train acc=0.749 	valid loss=0.712 	valid acc=0.605 
+12 	train loss=0.482 	train acc=0.755 	valid loss=0.705 	valid acc=0.635 
+13 	train loss=0.473 	train acc=0.760 	valid loss=0.689 	valid acc=0.650 
+14 	train loss=0.462 	train acc=0.769 	valid loss=0.704 	valid acc=0.650 
+15 	train loss=0.448 	train acc=0.778 	valid loss=0.762 	valid acc=0.635 
+16 	train loss=0.440 	train acc=0.783 	valid loss=0.780 	valid acc=0.615 
+17 	train loss=0.429 	train acc=0.790 	valid loss=0.722 	valid acc=0.645 
+18 	train loss=0.415 	train acc=0.799 	valid loss=0.774 	valid acc=0.655 
+19 	train loss=0.400 	train acc=0.805 	valid loss=0.824 	valid acc=0.600 
+20 	train loss=0.390 	train acc=0.812 	valid loss=0.735 	valid acc=0.690 
+21 	train loss=0.376 	train acc=0.822 	valid loss=0.871 	valid acc=0.640 
+22 	train loss=0.364 	train acc=0.827 	valid loss=0.804 	valid acc=0.665 
+	test acc on best model = 0.65375

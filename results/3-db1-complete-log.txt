@@ -1,0 +1,29 @@
+bd1-complete (continue) 
+running with learning rate = 0.0001 and batch size = 700
+Data Prepared:
+	TRAIN:129600
+	VALID:560
+	TEST:560
+9 	train loss=0.481 	train acc=0.750 	valid loss=0.500 	valid acc=0.764 	> saved as best model!
+10 	train loss=0.462 	train acc=0.761 	valid loss=0.492 	valid acc=0.768 	> saved as best model!
+11 	train loss=0.443 	train acc=0.773 	valid loss=0.468 	valid acc=0.754 	> saved as best model!
+12 	train loss=0.425 	train acc=0.785 	valid loss=0.524 	valid acc=0.764 
+13 	train loss=0.403 	train acc=0.799 	valid loss=0.554 	valid acc=0.752 
+14 	train loss=0.385 	train acc=0.810 	valid loss=0.529 	valid acc=0.738 
+15 	train loss=0.363 	train acc=0.825 	valid loss=0.522 	valid acc=0.759 
+16 	train loss=0.339 	train acc=0.840 	valid loss=0.543 	valid acc=0.775 
+17 	train loss=0.323 	train acc=0.850 	valid loss=0.644 	valid acc=0.766 
+18 	train loss=0.300 	train acc=0.862 	valid loss=0.570 	valid acc=0.780 
+19 	train loss=0.280 	train acc=0.874 	valid loss=0.637 	valid acc=0.743 
+20 	train loss=0.265 	train acc=0.881 	valid loss=0.791 	valid acc=0.755 
+21 	train loss=0.252 	train acc=0.888 	valid loss=0.574 	valid acc=0.779 
+22 	train loss=0.234 	train acc=0.898 	valid loss=0.695 	valid acc=0.754 
+	test acc on best model = 0.6357142857142857
+
+ ################################################## 
+TEST db1-complete 
+Data Prepared:
+	TRAIN:129600
+	VALID:560
+	TEST:560
+>>> test acc on best model = 0.6357142857142857

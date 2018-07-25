@@ -1,0 +1,39 @@
+db4-complete  
+running with learning rate = 0.0001 and batch size = 700
+Data Prepared:
+	TRAIN:129600
+	VALID:560
+	TEST:560
+1 	train loss=0.668 	train acc=0.583 	valid loss=0.594 	valid acc=0.671 	> saved as best model!
+2 	train loss=0.587 	train acc=0.670 	valid loss=0.575 	valid acc=0.704 	> saved as best model!
+3 	train loss=0.556 	train acc=0.696 	valid loss=0.569 	valid acc=0.705 	> saved as best model!
+4 	train loss=0.531 	train acc=0.717 	valid loss=0.535 	valid acc=0.762 	> saved as best model!
+5 	train loss=0.514 	train acc=0.730 	valid loss=0.504 	valid acc=0.766 	> saved as best model!
+6 	train loss=0.496 	train acc=0.742 	valid loss=0.479 	valid acc=0.780 	> saved as best model!
+7 	train loss=0.479 	train acc=0.754 	valid loss=0.498 	valid acc=0.787 
+8 	train loss=0.461 	train acc=0.766 	valid loss=0.468 	valid acc=0.811 	> saved as best model!
+9 	train loss=0.445 	train acc=0.776 	valid loss=0.422 	valid acc=0.846 	> saved as best model!
+10 	train loss=0.425 	train acc=0.790 	valid loss=0.534 	valid acc=0.736 
+11 	train loss=0.414 	train acc=0.796 	valid loss=0.442 	valid acc=0.830 
+12 	train loss=0.400 	train acc=0.805 	valid loss=0.459 	valid acc=0.827 
+13 	train loss=0.384 	train acc=0.814 	valid loss=0.426 	valid acc=0.839 
+14 	train loss=0.368 	train acc=0.823 	valid loss=0.440 	valid acc=0.829 
+15 	train loss=0.357 	train acc=0.829 	valid loss=0.455 	valid acc=0.839 
+16 	train loss=0.345 	train acc=0.835 	valid loss=0.437 	valid acc=0.841 
+17 	train loss=0.333 	train acc=0.842 	valid loss=0.456 	valid acc=0.821 
+18 	train loss=0.330 	train acc=0.843 	valid loss=0.435 	valid acc=0.852 
+19 	train loss=0.312 	train acc=0.852 	valid loss=0.449 	valid acc=0.848 
+20 	train loss=0.305 	train acc=0.855 	valid loss=0.485 	valid acc=0.841 
+21 	train loss=0.290 	train acc=0.865 	valid loss=0.450 	valid acc=0.850 
+22 	train loss=0.281 	train acc=0.869 	valid loss=0.394 	valid acc=0.859 	> saved as best model!
+23 	train loss=0.270 	train acc=0.875 	valid loss=0.423 	valid acc=0.877 
+24 	train loss=0.260 	train acc=0.881 	valid loss=0.444 	valid acc=0.838 
+	test acc on best model = 0.7696428571428572
+
+ ################################################## 
+TEST db4-complete 
+Data Prepared:
+	TRAIN:129600
+	VALID:560
+	TEST:560
+>>> test acc on best model = 0.7696428571428572

@@ -1,0 +1,7 @@
+
+ ################################################## 
+TRAIN 6-db4-complete-128 
+Data Prepared:
+	TRAIN:129600
+	VALID:560
+	TEST:560
