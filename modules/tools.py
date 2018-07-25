@@ -115,6 +115,7 @@ def plot(train_loss, valid_loss, train_acc, valid_acc, tag):
 
 def plot_hist(x, y, bin_num, tag):
     bins = np.linspace(min(x + y), max(x + y), bin_num)
+    plt.clf()
     plt.hist(x, bins, density=True, facecolor='g', alpha=0.5)
     plt.hist(y, bins, density=True, facecolor='r', alpha=0.5)
     plt.xlabel('Match_Score - Non_Match_Score')
