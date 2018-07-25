@@ -9,7 +9,7 @@ from modules.net import Cnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 batch_size = 700
-learning_rate = 1e-4
+learning_rate = 1e-5
 max_loss_diff = 0.04
 min_epochs = 20
 max_epochs = 50
