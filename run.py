@@ -1,11 +1,12 @@
 import argparse
+
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
 from modules.net import Cnn
-from modules.tools import plot, make_xy, make_train_xy, check_data, check_sample, plot_hist
+from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 batch_size = 700
 learning_rate = 1e-4
@@ -15,8 +16,10 @@ max_epochs = 50
 
 IMAGE_ROW = 181
 IMAGE_COL = 181
+VALID_DBs = ['NIST', 'FVC1', 'FVC2', 'FVC3', 'FVC4']
 
 parser = argparse.ArgumentParser()
+parser.add_argument('Dataset', choices=VALID_DBs, help='Dataset name')
 parser.add_argument('-tag', dest='TAG', default='TEST', help='set a tag (use for save results)')
 parser.add_argument('-cont', dest='CONT', type=int, default=None, help='continue last run from specific epoch')
 parser.add_argument('--test', dest='TEST', action='store_true', default=False, help='only test from existing model')
@@ -39,23 +42,20 @@ print_and_log('\n', ''.join(['#'] * 50),
 #######################################################################################
 # PREPARE DATA
 #######################################################################################
-'''
-# NIST-DB4
-loaded = np.load('dataset/images_181_181.npz')
-sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
-sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
-sample_list = [sample1, sample2]
-test_size = 400  # from 2000
-valid_size = 100  # from 2000
-# check_sample(sample1[-20:], sample2[-20:])
-'''
-# FVC2002
-loaded = np.load('dataset/fvc_181_181.npz')
-loaded = loaded['DB4']
-sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
-test_size = 10  # from 110
-valid_size = 10  # from 110
-# '''
+if args.Dataset == 'NIST':
+    loaded = np.load('dataset/images_181_181.npz')
+    sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+    sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
+    sample_list = [sample1, sample2]
+    test_size = 400  # from 2000
+    valid_size = 100  # from 2000
+else:  # FVC2002
+    loaded = np.load('dataset/fvc_181_181.npz')
+    loaded = loaded['DB{}'.format(args.Dataset[-1])]
+    sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
+    test_size = 10  # from 110
+    valid_size = 10  # from 110
+
 # SHUFFLE DATA
 np.random.seed(0)
 ind = np.random.permutation(range(sample_list[0].shape[0])).astype(np.int)
