@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
 from modules.net import Cnn
-from modules.tools import plot, make_xy, make_train_xy, check_data, check_sample
+from modules.tools import plot, make_xy, make_train_xy, check_data, check_sample, plot_hist
 
 batch_size = 700
 learning_rate = 1e-4
@@ -19,19 +19,22 @@ IMAGE_COL = 181
 parser = argparse.ArgumentParser()
 parser.add_argument('-tag', dest='TAG', default='TEST', help='set a tag (use for save results)')
 parser.add_argument('-cont', dest='CONT', type=int, default=None, help='continue last run from specific epoch')
+parser.add_argument('--test', dest='TEST', action='store_true', default=False, help='only test from existing model')
 args = parser.parse_args()
+if args.CONT is not None and args.TEST is True:
+    raise Exception('Can not use --test and -cont options in the same time')
 
 
 def print_and_log(*content):
     content = ' '.join(content)
     print(content)
-    with open('results/log-{}.txt'.format(args.TAG), 'a') as file:
+    with open('results/{}-log.txt'.format(args.TAG), 'a') as file:
         file.write('{}\n'.format(content))
 
 
-print_and_log(args.TAG, '(continue)' if args.CONT is not None else '',
-              '\nrunning with learning rate = {}'.format(learning_rate),
-              'and batch size = {}'.format(batch_size))
+print_and_log('\n', ''.join(['#'] * 50),
+              '\nTRAIN' if not args.TEST else '\nTEST',
+              args.TAG, '(continue)' if args.CONT is not None else '', )
 
 #######################################################################################
 # PREPARE DATA
@@ -52,7 +55,7 @@ loaded = loaded['DB4']
 sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
 test_size = 10  # from 110
 valid_size = 10  # from 110
-#'''
+# '''
 # SHUFFLE DATA
 np.random.seed(0)
 ind = np.random.permutation(range(sample_list[0].shape[0])).astype(np.int)
@@ -81,80 +84,91 @@ print_and_log('Data Prepared:\n'
               '\tTEST:{}'.format(train_x.shape[0], valid_x.shape[0], test_x.shape[0]))
 
 #######################################################################################
-# DO TRAIN
+# LOAD OR CREATE MODEL
 #######################################################################################
-train_loader = DataLoader(ImageDataset(train_x, train_y), batch_size=batch_size, shuffle=True)
-valid_loader = DataLoader(ImageDataset(valid_x, valid_y), batch_size=batch_size, shuffle=True)
-
 net = Cnn()
 start_epoch = 0
 if args.CONT is not None:
-    net.load_state_dict(torch.load('results/model-{}.pkl'.format(args.TAG)))
+    net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
     start_epoch = args.CONT
 loss_fn = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
-plot_train_loss, plot_train_acc, plot_valid_loss, plot_valid_acc = [], [], [], []
-for epoch in range(start_epoch, max_epochs):
-    train_loss_list = list()
-    valid_loss_list = list()
-    train_correct = 0
-    valid_correct = 0
-    for features, labels in train_loader:  # For each batch, do:
-        features = torch.autograd.Variable(features.float())
-        labels = torch.autograd.Variable(labels.long())
-        outputs = net(features)
-        train_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-        loss = loss_fn(outputs, labels)
-        train_loss_list.append(loss.data.item())
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+if not args.TEST:
+    #######################################################################################
+    # DO TRAIN
+    #######################################################################################
+    train_loader = DataLoader(ImageDataset(train_x, train_y), batch_size=batch_size, shuffle=True)
+    valid_loader = DataLoader(ImageDataset(valid_x, valid_y), batch_size=batch_size, shuffle=True)
 
-    for features, labels in valid_loader:  # For each batch, do:
-        features = torch.autograd.Variable(features.float())
-        labels = torch.autograd.Variable(labels.long())
-        outputs = net(features)
-        valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-        loss = loss_fn(outputs, labels)
-        valid_loss_list.append(loss.data.item())
+    plot_train_loss, plot_train_acc, plot_valid_loss, plot_valid_acc = [], [], [], []
+    for epoch in range(start_epoch, max_epochs):
+        train_loss_list = list()
+        valid_loss_list = list()
+        train_correct = 0
+        valid_correct = 0
+        for features, labels in train_loader:  # For each batch, do:
+            features = torch.autograd.Variable(features.float())
+            labels = torch.autograd.Variable(labels.long())
+            outputs = net(features)
+            train_correct += torch.sum(torch.argmax(outputs, 1) == labels)
+            loss = loss_fn(outputs, labels)
+            train_loss_list.append(loss.data.item())
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
 
-    saved = False
-    train_acc = train_correct.item() / train_x.shape[0]
-    valid_acc = valid_correct.item() / valid_x.shape[0]
-    train_loss = sum(train_loss_list) / len(train_loss_list)
-    valid_loss = sum(valid_loss_list) / len(valid_loss_list)
+        for features, labels in valid_loader:  # For each batch, do:
+            features = torch.autograd.Variable(features.float())
+            labels = torch.autograd.Variable(labels.long())
+            outputs = net(features)
+            valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
+            loss = loss_fn(outputs, labels)
+            valid_loss_list.append(loss.data.item())
 
-    plot_train_acc.append(train_acc)
-    plot_train_loss.append(train_loss)
-    plot_valid_loss.append(valid_loss)
-    plot_valid_acc.append(valid_acc)
+        saved = False
+        train_acc = train_correct.item() / train_x.shape[0]
+        valid_acc = valid_correct.item() / valid_x.shape[0]
+        train_loss = sum(train_loss_list) / len(train_loss_list)
+        valid_loss = sum(valid_loss_list) / len(valid_loss_list)
 
-    if valid_loss == min(plot_valid_loss):
-        torch.save(net.state_dict(), 'results/model-{}.pkl'.format(args.TAG))
-        saved = True
-    print_and_log(str(epoch + 1),
-                  '\ttrain loss={:.3f}'.format(train_loss),
-                  '\ttrain acc={:.3f}'.format(train_acc),
-                  '\tvalid loss={:.3f}'.format(valid_loss),
-                  '\tvalid acc={:.3f}'.format(valid_acc),
-                  '\t> saved as best model!' if saved else '')
-    if epoch > min_epochs:
-        if valid_loss - min(plot_valid_loss[-5:]) > max_loss_diff:
-            break
+        plot_train_acc.append(train_acc)
+        plot_train_loss.append(train_loss)
+        plot_valid_loss.append(valid_loss)
+        plot_valid_acc.append(valid_acc)
+
+        if valid_loss == min(plot_valid_loss):
+            torch.save(net.state_dict(), 'results/{}-model.pkl'.format(args.TAG))
+            saved = True
+        print_and_log(str(epoch + 1),
+                      '\ttrain loss={:.3f}'.format(train_loss),
+                      '\ttrain acc={:.3f}'.format(train_acc),
+                      '\tvalid loss={:.3f}'.format(valid_loss),
+                      '\tvalid acc={:.3f}'.format(valid_acc),
+                      '\t> saved as best model!' if saved else '')
+        if epoch > min_epochs:
+            if valid_loss - min(plot_valid_loss[-5:]) > max_loss_diff:
+                break
 
 #######################################################################################
 # TEST BEST MODEL
 #######################################################################################
 test_loader = DataLoader(ImageDataset(test_x, test_y), batch_size=batch_size, shuffle=True)
 
-net.load_state_dict(torch.load('results/model-{}.pkl'.format(args.TAG)))
+net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
 net.eval()
 test_correct = 0
+true_list = list()
+false_list = list()
 for features, labels in test_loader:  # For each batch, do:
     features = torch.autograd.Variable(features.float())
     labels = torch.autograd.Variable(labels.long())
     outputs = net(features)
+    diff = outputs[:, 1] - outputs[:, 0]
+    true_list += diff[labels == 1].tolist()
+    false_list += diff[labels == 0].tolist()
     test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-print_and_log('\ttest acc on best model =', str(test_correct.item() / test_x.shape[0]))
-plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
+print_and_log('>>> test acc on best model =', str(test_correct.item() / test_x.shape[0]))
+if not args.TEST:
+    plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
+plot_hist(true_list, false_list, bin_num=20, tag=args.TAG)

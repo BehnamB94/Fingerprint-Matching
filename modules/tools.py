@@ -110,7 +110,16 @@ def plot(train_loss, valid_loss, train_acc, valid_acc, tag):
     ax2.set_ylabel('validation and train accuracy', color='blue')
     ax2.tick_params('y', colors='blue')
     fig.tight_layout()
-    plt.savefig('results/plot-{}.png'.format(tag))
+    plt.savefig('results/{}-plot.png'.format(tag))
+
+
+def plot_hist(x, y, bin_num, tag):
+    bins = np.linspace(min(x + y), max(x + y), bin_num)
+    plt.hist(x, bins, density=True, facecolor='g', alpha=0.5)
+    plt.hist(y, bins, density=True, facecolor='r', alpha=0.5)
+    plt.xlabel('Match_Score - Non_Match_Score')
+    plt.title('Histogram of differences')
+    plt.savefig('results/{}-hist.png'.format(tag))
 
 
 def check_data(data, labels):
