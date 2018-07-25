@@ -68,20 +68,19 @@ for i in range(len(sample_list)):
     sample_list[i] = sample_list[i][:-test_size]
 
 # PREPARE VALIDATION SET
-valid_x, valid_y = make_xy([s[-valid_size:] for s in sample_list])
-for i in range(len(sample_list)):
-    sample_list[i] = sample_list[i][:-valid_size]
+if not args.TEST:
+    valid_x, valid_y = make_xy([s[-valid_size:] for s in sample_list])
+    for i in range(len(sample_list)):
+        sample_list[i] = sample_list[i][:-valid_size]
 
-# PREPARE TRAIN SET
-train_x, train_y = make_train_xy(sample_list)
-# check_data(train_x[-20:], train_y[-20:])
-# exit()
+    # PREPARE TRAIN SET
+    train_x, train_y = make_train_xy(sample_list)
 np.random.seed()
 
-print_and_log('Data Prepared:\n'
-              '\tTRAIN:{}\n'
-              '\tVALID:{}\n'
-              '\tTEST:{}'.format(train_x.shape[0], valid_x.shape[0], test_x.shape[0]))
+print_and_log('Data Prepared:\n',
+              '\tTRAIN:{}\n'.format(train_x.shape[0]) if not args.TEST else '',
+              '\tVALID:{}\n'.format(valid_x.shape[0]) if not args.TEST else '',
+              '\tTEST:{}'.format(test_x.shape[0]))
 
 #######################################################################################
 # LOAD OR CREATE MODEL
@@ -171,4 +170,4 @@ for features, labels in test_loader:  # For each batch, do:
 print_and_log('>>> test acc on best model =', str(test_correct.item() / test_x.shape[0]))
 if not args.TEST:
     plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
-plot_hist(true_list, false_list, bin_num=20, tag=args.TAG)
+plot_hist(true_list, false_list, bin_num=30, tag=args.TAG)
