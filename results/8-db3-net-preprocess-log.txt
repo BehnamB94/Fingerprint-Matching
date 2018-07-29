@@ -1,6 +1,6 @@
 
  ################################################## 
-TRAIN 8-db3-net-preprocess 
+TRAIN 8-db3-net 
 Data Prepared:
  	TRAIN:129600
  	VALID:560
