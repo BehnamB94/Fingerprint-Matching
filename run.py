@@ -170,4 +170,4 @@ for features, labels in test_loader:  # For each batch, do:
 print_and_log('>>> test acc on best model =', str(test_correct.item() / test_x.shape[0]))
 if not args.TEST:
     plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
-plot_hist(true_list, false_list, bin_num=30, tag=args.TAG)
+plot_hist(true_list, false_list, bin_num=100, tag=args.TAG)
