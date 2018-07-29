@@ -56,3 +56,15 @@ Data Prepared:
 49 	train loss=0.452 	train acc=0.772 	valid loss=0.406 	valid acc=0.845 
 50 	train loss=0.449 	train acc=0.773 	valid loss=0.392 	valid acc=0.852 
 >>> test acc on best model = 0.725
+
+ ################################################## 
+TEST 7-db4-while-blocks-decrease-lr 
+Data Prepared:
+   	TEST:560
+>>> test acc on best model = 0.725
+
+ ################################################## 
+TEST 7-db4-while-blocks-decrease-lr 
+Data Prepared:
+   	TEST:560
+>>> test acc on best model = 0.725

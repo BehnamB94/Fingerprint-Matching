@@ -1,0 +1,21 @@
+
+ ################################################## 
+TRAIN 8-db3-net-preprocess 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+1 	train loss=0.700 	train acc=0.506 	valid loss=0.687 	valid acc=0.523 	> saved as best model!
+2 	train loss=0.689 	train acc=0.538 	valid loss=0.688 	valid acc=0.557 
+3 	train loss=0.676 	train acc=0.577 	valid loss=0.676 	valid acc=0.588 	> saved as best model!
+4 	train loss=0.659 	train acc=0.608 	valid loss=0.674 	valid acc=0.584 	> saved as best model!
+5 	train loss=0.643 	train acc=0.630 	valid loss=0.678 	valid acc=0.580 
+6 	train loss=0.635 	train acc=0.638 	valid loss=0.664 	valid acc=0.598 	> saved as best model!
+7 	train loss=0.627 	train acc=0.647 	valid loss=0.645 	valid acc=0.613 	> saved as best model!
+8 	train loss=0.622 	train acc=0.652 	valid loss=0.654 	valid acc=0.611 
+9 	train loss=0.615 	train acc=0.658 	valid loss=0.652 	valid acc=0.637 
+10 	train loss=0.610 	train acc=0.661 	valid loss=0.654 	valid acc=0.625 
+11 	train loss=0.603 	train acc=0.666 	valid loss=0.641 	valid acc=0.632 	> saved as best model!
+
+ ################################################## 
+TRAIN 8-db3-net-preprocess 
