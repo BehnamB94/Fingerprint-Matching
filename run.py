@@ -9,10 +9,10 @@ from modules.net import Cnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 batch_size = 700
-learning_rate = 1e-5
+learning_rate = 5e-5
 max_loss_diff = 0.04
-min_epochs = 20
-max_epochs = 50
+min_epochs = 500
+max_epochs = 1000
 
 IMAGE_ROW = 181
 IMAGE_COL = 181
@@ -43,7 +43,7 @@ print_and_log('\n', ''.join(['#'] * 50),
 # PREPARE DATA
 #######################################################################################
 if args.Dataset == 'NIST':
-    loaded = np.load('dataset/images_181_181.npz')
+    loaded = np.load('dataset/fvc_normalize_181_181.npz')
     sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
     sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
     sample_list = [sample1, sample2]
