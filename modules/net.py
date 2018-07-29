@@ -17,15 +17,24 @@ class Cnn(nn.Module):
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2, padding=1),
 
-            nn.Conv2d(64, 128, kernel_size=5, stride=1),
+            nn.Conv2d(64, 64, kernel_size=3, stride=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=1),
+
+            nn.Conv2d(64, 128, kernel_size=2, stride=1),
             nn.ReLU(),
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(1 * 128, 64),
+            nn.Linear(128, 128),
+            nn.LogSigmoid(),
+            nn.Dropout(p=.5),
+
+            nn.Linear(128, 64),
             nn.ReLU(),
             nn.Dropout(p=.5),
-            nn.Linear(64, 2)
+
+            nn.Linear(64, 2),
         )
 
     def forward(self, data):
