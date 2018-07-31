@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
 
 
 def make_xy(sample_list):
@@ -98,19 +100,30 @@ def make_train_xy(sample_list):
     return x, y
 
 
-def plot(train_loss, valid_loss, train_acc, valid_acc, tag):
-    fig, ax1 = plt.subplots()
+def plot(train_loss, valid_loss, test_loss, train_acc, valid_acc, test_acc, tag):
+    fig, ax1 = plt.subplots(figsize=(10, 6))
     x_range = np.arange(len(train_acc)) + 1
     ax1.plot(x_range, train_loss, 'red')
     ax1.plot(x_range, valid_loss, 'r--')
+    ax1.plot(x_range, test_loss, 'r:')
     ax1.set_xlabel('epoch')
     ax1.set_ylabel('validation and train loss', color='red')
     ax1.tick_params('y', colors='red')
     ax2 = ax1.twinx()
     ax2.plot(x_range, train_acc, 'blue')
     ax2.plot(x_range, valid_acc, 'b--')
+    ax2.plot(x_range, test_acc, 'b:')
     ax2.set_ylabel('validation and train accuracy', color='blue')
     ax2.tick_params('y', colors='blue')
+
+    legend_elements = [
+        Patch(facecolor='blue', edgecolor='black', label='Accuracy'),
+        Patch(facecolor='red', edgecolor='black', label='Loss'),
+        Line2D([0], [0], color='black', lw=1, label='Train'),
+        Line2D([0], [0], color='black', ls='--', lw=1, label='Validation'),
+        Line2D([0], [0], color='black', ls=':', lw=1, label='Test'),
+    ]
+    ax2.legend(handles=legend_elements)
     fig.tight_layout()
     plt.savefig('results/{}-plot.png'.format(tag))
 
