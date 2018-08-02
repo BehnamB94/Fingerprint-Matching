@@ -11,8 +11,8 @@ from modules.tools import plot, make_xy, make_train_xy, plot_hist
 batch_size = 700
 learning_rate = 5e-5
 max_loss_diff = 0.04
-min_epochs = 500
-max_epochs = 1000
+min_epochs = 100
+max_epochs = 500
 
 IMAGE_ROW = 181
 IMAGE_COL = 181

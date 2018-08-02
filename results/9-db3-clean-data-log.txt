@@ -1,0 +1,119 @@
+
+ ################################################## 
+TRAIN 9-db3-clean-data 
+Data Prepared:
+ 	TRAIN:10080
+ 	VALID:560
+ 	TEST:560
+1 	train loss=0.715 	train acc=0.496 	valid loss=0.723 	valid acc=0.475 	> saved as best model!
+2 	train loss=0.708 	train acc=0.504 	valid loss=0.708 	valid acc=0.505 	> saved as best model!
+3 	train loss=0.713 	train acc=0.488 	valid loss=0.705 	valid acc=0.489 	> saved as best model!
+4 	train loss=0.706 	train acc=0.504 	valid loss=0.702 	valid acc=0.520 	> saved as best model!
+5 	train loss=0.708 	train acc=0.499 	valid loss=0.712 	valid acc=0.493 
+6 	train loss=0.705 	train acc=0.499 	valid loss=0.700 	valid acc=0.498 	> saved as best model!
+7 	train loss=0.704 	train acc=0.497 	valid loss=0.697 	valid acc=0.495 	> saved as best model!
+8 	train loss=0.702 	train acc=0.504 	valid loss=0.695 	valid acc=0.527 	> saved as best model!
+9 	train loss=0.700 	train acc=0.503 	valid loss=0.694 	valid acc=0.527 	> saved as best model!
+10 	train loss=0.699 	train acc=0.500 	valid loss=0.699 	valid acc=0.512 
+11 	train loss=0.699 	train acc=0.498 	valid loss=0.701 	valid acc=0.471 
+12 	train loss=0.697 	train acc=0.500 	valid loss=0.697 	valid acc=0.514 
+13 	train loss=0.698 	train acc=0.489 	valid loss=0.693 	valid acc=0.507 	> saved as best model!
+14 	train loss=0.696 	train acc=0.506 	valid loss=0.696 	valid acc=0.498 
+15 	train loss=0.698 	train acc=0.493 	valid loss=0.699 	valid acc=0.466 
+16 	train loss=0.695 	train acc=0.502 	valid loss=0.701 	valid acc=0.466 
+17 	train loss=0.696 	train acc=0.497 	valid loss=0.696 	valid acc=0.511 
+18 	train loss=0.695 	train acc=0.502 	valid loss=0.698 	valid acc=0.470 
+19 	train loss=0.695 	train acc=0.499 	valid loss=0.696 	valid acc=0.495 
+20 	train loss=0.695 	train acc=0.502 	valid loss=0.695 	valid acc=0.459 
+21 	train loss=0.695 	train acc=0.500 	valid loss=0.692 	valid acc=0.509 	> saved as best model!
+22 	train loss=0.695 	train acc=0.503 	valid loss=0.692 	valid acc=0.521 	> saved as best model!
+23 	train loss=0.695 	train acc=0.503 	valid loss=0.695 	valid acc=0.491 
+24 	train loss=0.695 	train acc=0.499 	valid loss=0.691 	valid acc=0.536 	> saved as best model!
+25 	train loss=0.694 	train acc=0.499 	valid loss=0.697 	valid acc=0.477 
+26 	train loss=0.694 	train acc=0.504 	valid loss=0.695 	valid acc=0.473 
+27 	train loss=0.695 	train acc=0.497 	valid loss=0.697 	valid acc=0.480 
+28 	train loss=0.695 	train acc=0.501 	valid loss=0.694 	valid acc=0.512 
+29 	train loss=0.695 	train acc=0.501 	valid loss=0.695 	valid acc=0.486 
+30 	train loss=0.694 	train acc=0.500 	valid loss=0.695 	valid acc=0.480 
+31 	train loss=0.694 	train acc=0.501 	valid loss=0.694 	valid acc=0.502 
+32 	train loss=0.694 	train acc=0.502 	valid loss=0.698 	valid acc=0.454 
+33 	train loss=0.694 	train acc=0.502 	valid loss=0.693 	valid acc=0.514 
+34 	train loss=0.693 	train acc=0.508 	valid loss=0.691 	valid acc=0.527 
+35 	train loss=0.694 	train acc=0.501 	valid loss=0.692 	valid acc=0.505 
+36 	train loss=0.694 	train acc=0.497 	valid loss=0.692 	valid acc=0.521 
+37 	train loss=0.694 	train acc=0.496 	valid loss=0.695 	valid acc=0.505 
+38 	train loss=0.694 	train acc=0.498 	valid loss=0.692 	valid acc=0.539 
+39 	train loss=0.694 	train acc=0.495 	valid loss=0.694 	valid acc=0.486 
+40 	train loss=0.694 	train acc=0.495 	valid loss=0.691 	valid acc=0.512 
+41 	train loss=0.694 	train acc=0.502 	valid loss=0.691 	valid acc=0.541 
+42 	train loss=0.694 	train acc=0.506 	valid loss=0.694 	valid acc=0.493 
+43 	train loss=0.694 	train acc=0.500 	valid loss=0.695 	valid acc=0.496 
+44 	train loss=0.694 	train acc=0.497 	valid loss=0.694 	valid acc=0.479 
+45 	train loss=0.694 	train acc=0.500 	valid loss=0.692 	valid acc=0.516 
+46 	train loss=0.694 	train acc=0.492 	valid loss=0.697 	valid acc=0.470 
+47 	train loss=0.693 	train acc=0.500 	valid loss=0.694 	valid acc=0.498 
+48 	train loss=0.694 	train acc=0.512 	valid loss=0.695 	valid acc=0.445 
+49 	train loss=0.693 	train acc=0.500 	valid loss=0.693 	valid acc=0.484 
+50 	train loss=0.693 	train acc=0.505 	valid loss=0.695 	valid acc=0.502 
+51 	train loss=0.694 	train acc=0.506 	valid loss=0.695 	valid acc=0.491 
+52 	train loss=0.694 	train acc=0.492 	valid loss=0.692 	valid acc=0.514 
+53 	train loss=0.694 	train acc=0.492 	valid loss=0.692 	valid acc=0.523 
+54 	train loss=0.693 	train acc=0.502 	valid loss=0.691 	valid acc=0.512 
+55 	train loss=0.694 	train acc=0.494 	valid loss=0.692 	valid acc=0.502 
+56 	train loss=0.694 	train acc=0.499 	valid loss=0.694 	valid acc=0.496 
+57 	train loss=0.694 	train acc=0.496 	valid loss=0.693 	valid acc=0.523 
+58 	train loss=0.693 	train acc=0.506 	valid loss=0.693 	valid acc=0.521 
+59 	train loss=0.693 	train acc=0.510 	valid loss=0.693 	valid acc=0.516 
+60 	train loss=0.694 	train acc=0.502 	valid loss=0.693 	valid acc=0.536 
+61 	train loss=0.694 	train acc=0.497 	valid loss=0.692 	valid acc=0.527 
+62 	train loss=0.693 	train acc=0.502 	valid loss=0.692 	valid acc=0.516 
+63 	train loss=0.693 	train acc=0.501 	valid loss=0.693 	valid acc=0.521 
+64 	train loss=0.693 	train acc=0.501 	valid loss=0.693 	valid acc=0.505 
+65 	train loss=0.693 	train acc=0.501 	valid loss=0.693 	valid acc=0.486 
+66 	train loss=0.694 	train acc=0.500 	valid loss=0.694 	valid acc=0.484 
+67 	train loss=0.694 	train acc=0.490 	valid loss=0.694 	valid acc=0.480 
+68 	train loss=0.694 	train acc=0.497 	valid loss=0.694 	valid acc=0.502 
+69 	train loss=0.693 	train acc=0.499 	valid loss=0.695 	valid acc=0.507 
+70 	train loss=0.693 	train acc=0.503 	valid loss=0.695 	valid acc=0.486 
+71 	train loss=0.693 	train acc=0.506 	valid loss=0.694 	valid acc=0.491 
+72 	train loss=0.694 	train acc=0.499 	valid loss=0.693 	valid acc=0.516 
+73 	train loss=0.693 	train acc=0.495 	valid loss=0.692 	valid acc=0.525 
+74 	train loss=0.694 	train acc=0.497 	valid loss=0.692 	valid acc=0.511 
+75 	train loss=0.693 	train acc=0.503 	valid loss=0.693 	valid acc=0.516 
+76 	train loss=0.694 	train acc=0.491 	valid loss=0.695 	valid acc=0.475 
+77 	train loss=0.694 	train acc=0.493 	valid loss=0.693 	valid acc=0.487 
+78 	train loss=0.693 	train acc=0.498 	valid loss=0.694 	valid acc=0.484 
+79 	train loss=0.693 	train acc=0.503 	valid loss=0.693 	valid acc=0.511 
+80 	train loss=0.693 	train acc=0.502 	valid loss=0.695 	valid acc=0.482 
+81 	train loss=0.693 	train acc=0.498 	valid loss=0.693 	valid acc=0.521 
+82 	train loss=0.693 	train acc=0.501 	valid loss=0.694 	valid acc=0.502 
+83 	train loss=0.694 	train acc=0.499 	valid loss=0.693 	valid acc=0.511 
+84 	train loss=0.694 	train acc=0.490 	valid loss=0.692 	valid acc=0.489 
+85 	train loss=0.693 	train acc=0.499 	valid loss=0.694 	valid acc=0.496 
+86 	train loss=0.693 	train acc=0.501 	valid loss=0.691 	valid acc=0.552 
+87 	train loss=0.693 	train acc=0.506 	valid loss=0.694 	valid acc=0.502 
+88 	train loss=0.693 	train acc=0.502 	valid loss=0.694 	valid acc=0.489 
+89 	train loss=0.694 	train acc=0.491 	valid loss=0.692 	valid acc=0.534 
+90 	train loss=0.693 	train acc=0.503 	valid loss=0.693 	valid acc=0.527 
+91 	train loss=0.693 	train acc=0.503 	valid loss=0.694 	valid acc=0.529 
+92 	train loss=0.693 	train acc=0.498 	valid loss=0.694 	valid acc=0.498 
+93 	train loss=0.694 	train acc=0.505 	valid loss=0.694 	valid acc=0.473 
+94 	train loss=0.693 	train acc=0.504 	valid loss=0.695 	valid acc=0.471 
+95 	train loss=0.693 	train acc=0.498 	valid loss=0.694 	valid acc=0.491 
+96 	train loss=0.693 	train acc=0.503 	valid loss=0.693 	valid acc=0.487 
+97 	train loss=0.693 	train acc=0.505 	valid loss=0.693 	valid acc=0.504 
+98 	train loss=0.693 	train acc=0.510 	valid loss=0.692 	valid acc=0.505 
+99 	train loss=0.693 	train acc=0.502 	valid loss=0.694 	valid acc=0.495 
+100 	train loss=0.694 	train acc=0.498 	valid loss=0.691 	valid acc=0.505 
+101 	train loss=0.693 	train acc=0.499 	valid loss=0.694 	valid acc=0.493 
+102 	train loss=0.693 	train acc=0.499 	valid loss=0.694 	valid acc=0.495 
+103 	train loss=0.693 	train acc=0.501 	valid loss=0.694 	valid acc=0.507 
+104 	train loss=0.693 	train acc=0.500 	valid loss=0.694 	valid acc=0.529 
+105 	train loss=0.693 	train acc=0.496 	valid loss=0.693 	valid acc=0.491 
+106 	train loss=0.693 	train acc=0.500 	valid loss=0.693 	valid acc=0.523 
+107 	train loss=0.694 	train acc=0.491 	valid loss=0.693 	valid acc=0.504 
+108 	train loss=0.693 	train acc=0.505 	valid loss=0.694 	valid acc=0.486 
+109 	train loss=0.693 	train acc=0.510 	valid loss=0.693 	valid acc=0.521 
+110 	train loss=0.693 	train acc=0.500 	valid loss=0.694 	valid acc=0.493 
+111 	train loss=0.693 	train acc=0.498 	valid loss=0.693 	valid acc=0.471 
+112 	train loss=0.693 	train acc=0.498 	valid loss=0.695 	valid acc=0.470 
