@@ -99,13 +99,17 @@ if not args.TEST:
     #######################################################################################
     train_loader = DataLoader(ImageDataset(train_x, train_y), batch_size=batch_size, shuffle=True)
     valid_loader = DataLoader(ImageDataset(valid_x, valid_y), batch_size=batch_size, shuffle=True)
+    test_loader = DataLoader(ImageDataset(test_x, test_y), batch_size=batch_size, shuffle=True)
 
     plot_train_loss, plot_train_acc, plot_valid_loss, plot_valid_acc = [], [], [], []
+    plot_test_loss, plot_test_acc = [], []
     for epoch in range(start_epoch, max_epochs):
         train_loss_list = list()
         valid_loss_list = list()
+        test_loss_list = list()
         train_correct = 0
         valid_correct = 0
+        test_correct = 0
         for features, labels in train_loader:  # For each batch, do:
             features = torch.autograd.Variable(features.float())
             labels = torch.autograd.Variable(labels.long())
@@ -125,16 +129,28 @@ if not args.TEST:
             loss = loss_fn(outputs, labels)
             valid_loss_list.append(loss.data.item())
 
+        for features, labels in test_loader:  # For each batch, do:
+            features = torch.autograd.Variable(features.float())
+            labels = torch.autograd.Variable(labels.long())
+            outputs = net(features)
+            test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
+            loss = loss_fn(outputs, labels)
+            test_loss_list.append(loss.data.item())
+
         saved = False
         train_acc = train_correct.item() / train_x.shape[0]
         valid_acc = valid_correct.item() / valid_x.shape[0]
+        test_acc = test_correct.item() / test_x.shape[0]
         train_loss = sum(train_loss_list) / len(train_loss_list)
         valid_loss = sum(valid_loss_list) / len(valid_loss_list)
+        test_loss = sum(test_loss_list) / len(test_loss_list)
 
         plot_train_acc.append(train_acc)
         plot_train_loss.append(train_loss)
         plot_valid_loss.append(valid_loss)
         plot_valid_acc.append(valid_acc)
+        plot_test_loss.append(test_loss)
+        plot_test_acc.append(test_acc)
 
         if valid_loss == min(plot_valid_loss):
             torch.save(net.state_dict(), 'results/{}-model.pkl'.format(args.TAG))
@@ -148,7 +164,7 @@ if not args.TEST:
         if epoch > min_epochs:
             if valid_loss - min(plot_valid_loss[-5:]) > max_loss_diff:
                 break
-
+    plot(plot_train_loss, plot_valid_loss, plot_test_loss, plot_train_acc, plot_valid_acc, plot_test_acc, tag=args.TAG)
 #######################################################################################
 # TEST BEST MODEL
 #######################################################################################
@@ -168,6 +184,4 @@ for features, labels in test_loader:  # For each batch, do:
     false_list += diff[labels == 0].tolist()
     test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
 print_and_log('>>> test acc on best model =', str(test_correct.item() / test_x.shape[0]))
-if not args.TEST:
-    plot(plot_train_loss, plot_valid_loss, plot_train_acc, plot_valid_acc, tag=args.TAG)
 plot_hist(true_list, false_list, bin_num=100, tag=args.TAG)
