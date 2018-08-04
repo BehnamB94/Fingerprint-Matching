@@ -399,3 +399,9 @@ Data Prepared:
 378 	train loss=0.373 	train acc=0.830 	valid loss=0.510 	valid acc=0.800 
 379 	train loss=0.372 	train acc=0.830 	valid loss=0.519 	valid acc=0.784 
 380 	train loss=0.373 	train acc=0.830 	valid loss=0.524 	valid acc=0.795 
+
+ ################################################## 
+TEST 8-net-preprocess 
+Data Prepared:
+   	TEST:560
+>>> test acc on best model = 0.6928571428571428

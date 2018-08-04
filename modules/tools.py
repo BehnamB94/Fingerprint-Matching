@@ -65,15 +65,15 @@ def make_train_xy(sample_list):
     mb_list = [add_miss_block(s) for s in sample_list]
     x_list.append(combine_pairs(sample_list + mb_list))
 
-    # tuple_list = [cut_image(s, .8) for s in sample_list]
-    # p8_list = list()
-    # for u, l in tuple_list: p8_list += [u, l]
-    # x_list.append(combine_pairs(p8_list))
+    tuple_list = [cut_image(s, .8) for s in sample_list]
+    p8_list = list()
+    for u, l in tuple_list: p8_list += [u, l]
+    x_list.append(combine_pairs(p8_list))
 
-    # tuple_list = [cut_image(s, .6) for s in sample_list]
-    # p6_list = list()
-    # for u, l in tuple_list: p6_list += [u, l]
-    # x_list.append(combine_pairs(p6_list))
+    tuple_list = [cut_image(s, .6) for s in sample_list]
+    p6_list = list()
+    for u, l in tuple_list: p6_list += [u, l]
+    x_list.append(combine_pairs(p6_list))
 
     # SMALLER DATABASE
     # x_list.append(combine_pairs(sample_list))
