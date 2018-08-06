@@ -23,6 +23,7 @@ parser.add_argument('Dataset', choices=VALID_DBs, help='Dataset name')
 parser.add_argument('-tag', dest='TAG', default='TEST', help='set a tag (use for save results)')
 parser.add_argument('-cont', dest='CONT', type=int, default=None, help='continue last run from specific epoch')
 parser.add_argument('--test', dest='TEST', action='store_true', default=False, help='only test from existing model')
+parser.add_argument('--gpu', dest='GPU', action='store_true', default=False, help='use gpu for running')
 args = parser.parse_args()
 if args.CONT is not None and args.TEST is True:
     raise Exception('Can not use --test and -cont options in the same time')
@@ -92,6 +93,8 @@ if args.CONT is not None:
     start_epoch = args.CONT
 loss_fn = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
+
+if args.GPU: net = net.cuda()
 
 if not args.TEST:
     #######################################################################################
