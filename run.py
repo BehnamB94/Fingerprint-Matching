@@ -8,11 +8,11 @@ from modules.dataset import ImageDataset
 from modules.net import MyCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-batch_size = 700
+batch_size = 150
 learning_rate = 5e-5
 max_loss_diff = 0.04
 min_epochs = 100
-max_epochs = 500
+max_epochs = 5
 
 IMAGE_ROW = 181
 IMAGE_COL = 181
@@ -116,6 +116,9 @@ if not args.TEST:
         for features, labels in train_loader:  # For each batch, do:
             features = torch.autograd.Variable(features.float())
             labels = torch.autograd.Variable(labels.long())
+            if args.GPU:
+                features = features.cuda()
+                labels = labels.cuda()
             outputs = net(features)
             train_correct += torch.sum(torch.argmax(outputs, 1) == labels)
             loss = loss_fn(outputs, labels)
@@ -127,6 +130,9 @@ if not args.TEST:
         for features, labels in valid_loader:  # For each batch, do:
             features = torch.autograd.Variable(features.float())
             labels = torch.autograd.Variable(labels.long())
+            if args.GPU:
+                features = features.cuda()
+                labels = labels.cuda()
             outputs = net(features)
             valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
             loss = loss_fn(outputs, labels)
@@ -135,6 +141,9 @@ if not args.TEST:
         for features, labels in test_loader:  # For each batch, do:
             features = torch.autograd.Variable(features.float())
             labels = torch.autograd.Variable(labels.long())
+            if args.GPU:
+                features = features.cuda()
+                labels = labels.cuda()
             outputs = net(features)
             test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
             loss = loss_fn(outputs, labels)
@@ -181,6 +190,9 @@ false_list = list()
 for features, labels in test_loader:  # For each batch, do:
     features = torch.autograd.Variable(features.float())
     labels = torch.autograd.Variable(labels.long())
+    if args.GPU:
+        features = features.cuda()
+        labels = labels.cuda()
     outputs = net(features)
     diff = outputs[:, 1] - outputs[:, 0]
     true_list += diff[labels == 1].tolist()
