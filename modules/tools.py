@@ -146,8 +146,8 @@ def check_data(data, labels):
                    cmap='gray')
 
 
-def check_sample(sample1, sample2):
-    for i, (s1, s2) in enumerate(zip(sample1, sample2)):
+def check_sample(sample_list):
+    for i in range(len(sample_list[0])):
         plt.imsave('check/sample-{}'.format(i),
-                   np.concatenate([s1[0], s2[0]], axis=1),
+                   np.concatenate([s[i, 0] for s in sample_list], axis=1),
                    cmap='gray')
