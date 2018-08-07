@@ -73,11 +73,11 @@ class MyCnn(nn.Module):
             nn.ReLU(),
             nn.Dropout(p=.5),
 
-            nn.Linear(128, 64),
-            nn.ReLU(),
-            nn.Dropout(p=.5),
+            # nn.Linear(128, 64),
+            # nn.ReLU(),
+            # nn.Dropout(p=.5),
 
-            nn.Linear(64, 2),
+            nn.Linear(128, 2),  # (64, 2),
         )
 
     def forward(self, data):
