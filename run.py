@@ -8,8 +8,8 @@ from modules.dataset import ImageDataset
 from modules.net import MyCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-cpu_batch_size = 300
-gpu_batch_size = 128
+cpu_batch_size = 400
+gpu_batch_size = 310
 learning_rate = 5e-5
 max_loss_diff = 0.04
 min_epochs = 100
