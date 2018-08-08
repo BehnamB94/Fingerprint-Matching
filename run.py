@@ -40,7 +40,8 @@ def print_and_log(*content):
 
 print_and_log('\n', ''.join(['#'] * 50),
               '\nTRAIN' if not args.TEST else '\nTEST',
-              args.TAG, '(continue)' if args.CONT is not None else '', )
+              '\ton Dataset:', args.Dataset,
+              '\ttag:', args.TAG, '(continue)' if args.CONT is not None else '')
 
 #######################################################################################
 # PREPARE DATA
