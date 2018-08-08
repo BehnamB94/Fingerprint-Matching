@@ -8,7 +8,8 @@ from modules.dataset import ImageDataset
 from modules.net import MyCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-batch_size = 300
+cpu_batch_size = 300
+gpu_batch_size = 128
 learning_rate = 5e-5
 max_loss_diff = 0.04
 min_epochs = 100
@@ -27,8 +28,7 @@ parser.add_argument('--gpu', dest='GPU', action='store_true', default=False, hel
 args = parser.parse_args()
 if args.CONT is not None and args.TEST is True:
     raise Exception('Can not use --test and -cont options in the same time')
-if args.GPU:
-    batch_size = 128
+batch_size = gpu_batch_size if args.GPU else cpu_batch_size
 
 
 def print_and_log(*content):
@@ -115,6 +115,8 @@ if not args.TEST:
         train_correct = 0
         valid_correct = 0
         test_correct = 0
+
+        net = net.train()
         for features, labels in train_loader:  # For each batch, do:
             features = torch.autograd.Variable(features.float())
             labels = torch.autograd.Variable(labels.long())
@@ -128,28 +130,34 @@ if not args.TEST:
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+        del features, labels
 
-        for features, labels in valid_loader:  # For each batch, do:
-            features = torch.autograd.Variable(features.float())
-            labels = torch.autograd.Variable(labels.long())
-            if args.GPU:
-                features = features.cuda()
-                labels = labels.cuda()
-            outputs = net(features)
-            valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-            loss = loss_fn(outputs, labels)
-            valid_loss_list.append(loss.data.item())
+        net = net.eval()
+        with torch.no_grad():
+            for features, labels in valid_loader:  # For each batch, do:
+                features = torch.autograd.Variable(features.float())
+                labels = torch.autograd.Variable(labels.long())
+                if args.GPU:
+                    features = features.cuda()
+                    labels = labels.cuda()
+                outputs = net(features)
+                valid_correct += torch.sum(torch.argmax(outputs, 1) == labels)
+                loss = loss_fn(outputs, labels)
+                valid_loss_list.append(loss.data.item())
+            del features, labels
 
-        for features, labels in test_loader:  # For each batch, do:
-            features = torch.autograd.Variable(features.float())
-            labels = torch.autograd.Variable(labels.long())
-            if args.GPU:
-                features = features.cuda()
-                labels = labels.cuda()
-            outputs = net(features)
-            test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-            loss = loss_fn(outputs, labels)
-            test_loss_list.append(loss.data.item())
+        with torch.no_grad():
+            for features, labels in test_loader:  # For each batch, do:
+                features = torch.autograd.Variable(features.float())
+                labels = torch.autograd.Variable(labels.long())
+                if args.GPU:
+                    features = features.cuda()
+                    labels = labels.cuda()
+                outputs = net(features)
+                test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
+                loss = loss_fn(outputs, labels)
+                test_loss_list.append(loss.data.item())
+            del features, labels
 
         saved = False
         train_acc = train_correct.item() / train_x.shape[0]
@@ -170,11 +178,13 @@ if not args.TEST:
             torch.save(net.state_dict(), 'results/{}-model.pkl'.format(args.TAG))
             saved = True
         print_and_log(str(epoch + 1),
-                      '\ttrain loss={:.3f}'.format(train_loss),
-                      '\ttrain acc={:.3f}'.format(train_acc),
-                      '\tvalid loss={:.3f}'.format(valid_loss),
-                      '\tvalid acc={:.3f}'.format(valid_acc),
-                      '\t> saved as best model!' if saved else '')
+                      '\tTrain(L={:.3f}'.format(train_loss),
+                      ' | A={:.3f})'.format(train_acc),
+                      '\tValid(L={:.3f}'.format(valid_loss),
+                      ' | A={:.3f})'.format(valid_acc),
+                      '\tTest(L={:.3f}'.format(test_loss),
+                      ' | A={:.3f})'.format(test_acc),
+                      '\t> Best' if saved else '')
         if epoch > min_epochs:
             if valid_loss - min(plot_valid_loss[-5:]) > max_loss_diff:
                 break
@@ -185,20 +195,22 @@ if not args.TEST:
 test_loader = DataLoader(ImageDataset(test_x, test_y), batch_size=batch_size, shuffle=True)
 
 net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
-net.eval()
+net = net.eval()
 test_correct = 0
 true_list = list()
 false_list = list()
-for features, labels in test_loader:  # For each batch, do:
-    features = torch.autograd.Variable(features.float())
-    labels = torch.autograd.Variable(labels.long())
-    if args.GPU:
-        features = features.cuda()
-        labels = labels.cuda()
-    outputs = net(features)
-    diff = outputs[:, 1] - outputs[:, 0]
-    true_list += diff[labels == 1].tolist()
-    false_list += diff[labels == 0].tolist()
-    test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
-print_and_log('>>> test acc on best model =', str(test_correct.item() / test_x.shape[0]))
+with torch.no_grad():
+    for features, labels in test_loader:  # For each batch, do:
+        features = torch.autograd.Variable(features.float())
+        labels = torch.autograd.Variable(labels.long())
+        if args.GPU:
+            features = features.cuda()
+            labels = labels.cuda()
+        outputs = net(features)
+        diff = outputs[:, 1] - outputs[:, 0]
+        true_list += diff[labels == 1].tolist()
+        false_list += diff[labels == 0].tolist()
+        test_correct += torch.sum(torch.argmax(outputs, 1) == labels)
+    del features, labels
+print_and_log('>>> Test acc on best model =', str(test_correct.item() / test_x.shape[0]))
 plot_hist(true_list, false_list, bin_num=100, tag=args.TAG)
