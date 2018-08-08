@@ -189,7 +189,9 @@ if not args.TEST:
         if epoch > min_epochs:
             if valid_loss - min(plot_valid_loss[-5:]) > max_loss_diff:
                 break
-    plot(plot_train_loss, plot_valid_loss, plot_test_loss, plot_train_acc, plot_valid_acc, plot_test_acc, tag=args.TAG)
+        plot(plot_train_loss, plot_valid_loss,
+             plot_test_loss, plot_train_acc,
+             plot_valid_acc, plot_test_acc, tag=args.TAG)
 #######################################################################################
 # TEST BEST MODEL
 #######################################################################################
