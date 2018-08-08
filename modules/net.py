@@ -87,3 +87,40 @@ class MyCnn(nn.Module):
         out2 = out2.view(out2.size(0), -1)
         out = torch.cat((out1, out2), 1)
         return self.fc(out)
+
+
+class NewCnn(nn.Module):
+    def __init__(self):
+        super(NewCnn, self).__init__()
+        self.convolution = nn.Sequential(
+            nn.Conv2d(1, 4, kernel_size=3),  # 179
+            nn.ReLU(),
+
+            nn.Conv2d(4, 8, kernel_size=3, ),  # 177
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),  # 89
+
+            nn.Conv2d(8, 8, kernel_size=3),  # 87
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),  # 44
+
+            nn.Conv2d(8, 8, kernel_size=3),  # 42
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),  # 21
+        )
+
+        self.fc = nn.Sequential(
+            nn.Linear(20 * 20 * 8 * 2, 100),
+            nn.ReLU(),
+            nn.Dropout(p=.5),
+
+            nn.Linear(100, 2),
+        )
+
+    def forward(self, data):
+        out1 = self.convolution(data[:, 0, :, :].unsqueeze_(1))
+        out2 = self.convolution(data[:, 1, :, :].unsqueeze_(1))
+        out1 = out1.view(out1.size(0), -1)
+        out2 = out2.view(out2.size(0), -1)
+        out = torch.cat((out1, out2), 1)
+        return self.fc(out)

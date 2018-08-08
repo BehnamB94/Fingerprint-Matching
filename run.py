@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
-from modules.net import MyCnn
+from modules.net import NewCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 cpu_batch_size = 400
@@ -89,7 +89,7 @@ print_and_log('Data Prepared:\n',
 #######################################################################################
 # LOAD OR CREATE MODEL
 #######################################################################################
-net = MyCnn()
+net = NewCnn()
 start_epoch = 0
 if args.CONT is not None:
     net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
