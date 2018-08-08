@@ -8,7 +8,7 @@ from modules.dataset import ImageDataset
 from modules.net import MyCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-batch_size = 150
+batch_size = 300
 learning_rate = 5e-5
 max_loss_diff = 0.04
 min_epochs = 100
@@ -27,6 +27,8 @@ parser.add_argument('--gpu', dest='GPU', action='store_true', default=False, hel
 args = parser.parse_args()
 if args.CONT is not None and args.TEST is True:
     raise Exception('Can not use --test and -cont options in the same time')
+if args.GPU:
+    batch_size = 128
 
 
 def print_and_log(*content):
