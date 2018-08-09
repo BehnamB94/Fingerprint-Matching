@@ -93,10 +93,10 @@ class NewCnn(nn.Module):
     def __init__(self):
         super(NewCnn, self).__init__()
         self.convolution = nn.Sequential(
-            nn.Conv2d(1, 4, kernel_size=3),  # 179
-            nn.ReLU(),
+            # nn.Conv2d(1, 4, kernel_size=3),  # 179
+            # nn.ReLU(),
 
-            nn.Conv2d(4, 8, kernel_size=3, ),  # 177
+            nn.Conv2d(1, 8, kernel_size=3, ),  # 177
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),  # 89
 

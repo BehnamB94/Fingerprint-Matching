@@ -9,7 +9,7 @@ from modules.net import NewCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 cpu_batch_size = 400
-gpu_batch_size = 310
+gpu_batch_size = 130
 learning_rate = 5e-5
 max_loss_diff = 0.04
 min_epochs = 100
@@ -25,7 +25,7 @@ parser.add_argument('-tag', dest='TAG', default='TEST', help='set a tag (use for
 parser.add_argument('-cont', dest='CONT', type=int, default=None, help='continue last run from specific epoch')
 parser.add_argument('--test', dest='TEST', action='store_true', default=False, help='only test from existing model')
 parser.add_argument('--gpu', dest='GPU', action='store_true', default=False, help='use gpu for running')
-args = parser.parse_args()
+args = parser.parse_args()  # ['FVC1', '--gpu']
 if args.CONT is not None and args.TEST is True:
     raise Exception('Can not use --test and -cont options in the same time')
 batch_size = gpu_batch_size if args.GPU else cpu_batch_size

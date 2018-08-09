@@ -64,8 +64,8 @@ def make_train_xy(sample_list):
     x_list = list()
 
     mb_list = [add_miss_block(s) for s in sample_list]
-    mb_list2 = [add_miss_block(s, block_size=15, blocks_on_image=5) for s in sample_list]
-    x_list.append(combine_pairs(sample_list + mb_list + mb_list2))
+    # mb_list2 = [add_miss_block(s, block_size=15, blocks_on_image=5) for s in sample_list]
+    x_list.append(combine_pairs(sample_list + mb_list))
 
     tuple_list = [cut_image(s, .8) for s in sample_list]
     p8_list = list()
