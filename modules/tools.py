@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
-from scipy.sparse.linalg._onenormest import _blocked_elementwise
 
 
 def make_xy(sample_list):
@@ -61,6 +60,11 @@ def combine_pairs(parts):
 def make_train_xy(sample_list):
     for i in range(len(sample_list) - 1):
         assert sample_list[i].shape == sample_list[i + 1].shape
+
+    # add flipped images
+    for i in range(len(sample_list)):
+        sample_list[i] = np.concatenate([sample_list[i], sample_list[i][:, :, :, ::-1]], axis=0)
+
     x_list = list()
 
     mb_list = [add_miss_block(s) for s in sample_list]
