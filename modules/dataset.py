@@ -14,10 +14,10 @@ class ImageDataset(Dataset):
     def __getitem__(self, idx):
         if self.pre_process:
             feature = self.feature_arr[idx].astype(np.float)
-            feature[0] -= feature[0].min()
-            feature[0] /= feature[0].max()
-            feature[1] -= feature[1].min()
-            feature[1] /= feature[1].max()
+            for i in range(2):
+                feature[i] -= feature[i].mean()
+                feature[i][feature[i] > 0] /= feature[i].max()
+                feature[i][feature[i] < 0] /= -feature[i].min()
         else:
             feature = self.feature_arr[idx]
         return feature, self.label_arr[idx]
