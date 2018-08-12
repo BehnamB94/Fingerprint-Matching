@@ -1,0 +1,101 @@
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 19-with-16-features 
+Data Prepared:
+ 	TRAIN:259200
+ 	VALID:560
+ 	TEST:560
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 19-with-16-features 
+Data Prepared:
+ 	TRAIN:360
+ 	VALID:560
+ 	TEST:560
+1 	Train(L=0.695  | A=0.497) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+2 	Train(L=0.693  | A=0.486) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+3 	Train(L=0.693  | A=0.472) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+4 	Train(L=0.693  | A=0.497) 	Valid(L=0.693  | A=0.516) 	Test(L=0.693  | A=0.504) 	> Best
+5 	Train(L=0.694  | A=0.489) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+6 	Train(L=0.693  | A=0.514) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+7 	Train(L=0.694  | A=0.472) 	Valid(L=0.693  | A=0.512) 	Test(L=0.693  | A=0.502) 
+8 	Train(L=0.695  | A=0.447) 	Valid(L=0.693  | A=0.502) 	Test(L=0.693  | A=0.500) 
+9 	Train(L=0.693  | A=0.508) 	Valid(L=0.693  | A=0.511) 	Test(L=0.693  | A=0.502) 
+10 	Train(L=0.693  | A=0.497) 	Valid(L=0.693  | A=0.502) 	Test(L=0.693  | A=0.498) 
+11 	Train(L=0.693  | A=0.522) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+12 	Train(L=0.692  | A=0.544) 	Valid(L=0.693  | A=0.504) 	Test(L=0.693  | A=0.500) 
+13 	Train(L=0.692  | A=0.539) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+14 	Train(L=0.693  | A=0.500) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+15 	Train(L=0.694  | A=0.494) 	Valid(L=0.693  | A=0.543) 	Test(L=0.693  | A=0.496) 
+16 	Train(L=0.694  | A=0.483) 	Valid(L=0.693  | A=0.491) 	Test(L=0.693  | A=0.505) 
+17 	Train(L=0.694  | A=0.472) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+18 	Train(L=0.693  | A=0.514) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+19 	Train(L=0.693  | A=0.533) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+20 	Train(L=0.694  | A=0.500) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+21 	Train(L=0.694  | A=0.478) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+22 	Train(L=0.694  | A=0.492) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+23 	Train(L=0.693  | A=0.497) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+24 	Train(L=0.694  | A=0.494) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+25 	Train(L=0.694  | A=0.489) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+26 	Train(L=0.694  | A=0.483) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+27 	Train(L=0.693  | A=0.506) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+28 	Train(L=0.693  | A=0.503) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+29 	Train(L=0.693  | A=0.472) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+30 	Train(L=0.694  | A=0.461) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+31 	Train(L=0.693  | A=0.525) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+32 	Train(L=0.693  | A=0.514) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+33 	Train(L=0.693  | A=0.506) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+34 	Train(L=0.693  | A=0.486) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+35 	Train(L=0.692  | A=0.542) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+36 	Train(L=0.693  | A=0.492) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+37 	Train(L=0.693  | A=0.503) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 19-with-16-features 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+1 	Train(L=0.693  | A=0.501) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+2 	Train(L=0.693  | A=0.499) 	Valid(L=0.694  | A=0.500) 	Test(L=0.693  | A=0.500) 
+3 	Train(L=0.693  | A=0.499) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+4 	Train(L=0.693  | A=0.501) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+5 	Train(L=0.693  | A=0.499) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+6 	Train(L=0.693  | A=0.499) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+7 	Train(L=0.677  | A=0.567) 	Valid(L=0.621  | A=0.652) 	Test(L=0.704  | A=0.530) 	> Best
+8 	Train(L=0.593  | A=0.689) 	Valid(L=0.553  | A=0.693) 	Test(L=0.691  | A=0.596) 	> Best
+9 	Train(L=0.565  | A=0.709) 	Valid(L=0.570  | A=0.698) 	Test(L=0.695  | A=0.609) 
+10 	Train(L=0.550  | A=0.718) 	Valid(L=0.553  | A=0.691) 	Test(L=0.685  | A=0.613) 
+11 	Train(L=0.539  | A=0.725) 	Valid(L=0.556  | A=0.689) 	Test(L=0.694  | A=0.616) 
+12 	Train(L=0.528  | A=0.731) 	Valid(L=0.531  | A=0.686) 	Test(L=0.688  | A=0.620) 	> Best
+13 	Train(L=0.518  | A=0.739) 	Valid(L=0.546  | A=0.684) 	Test(L=0.667  | A=0.627) 
+14 	Train(L=0.509  | A=0.743) 	Valid(L=0.554  | A=0.684) 	Test(L=0.689  | A=0.629) 
+15 	Train(L=0.500  | A=0.748) 	Valid(L=0.531  | A=0.688) 	Test(L=0.668  | A=0.634) 	> Best
+16 	Train(L=0.492  | A=0.754) 	Valid(L=0.537  | A=0.707) 	Test(L=0.670  | A=0.641) 
+17 	Train(L=0.484  | A=0.759) 	Valid(L=0.528  | A=0.702) 	Test(L=0.662  | A=0.641) 	> Best
+18 	Train(L=0.477  | A=0.765) 	Valid(L=0.526  | A=0.707) 	Test(L=0.659  | A=0.648) 	> Best
+19 	Train(L=0.469  | A=0.769) 	Valid(L=0.537  | A=0.718) 	Test(L=0.649  | A=0.652) 
+20 	Train(L=0.461  | A=0.775) 	Valid(L=0.551  | A=0.718) 	Test(L=0.620  | A=0.691) 
+21 	Train(L=0.452  | A=0.782) 	Valid(L=0.533  | A=0.730) 	Test(L=0.661  | A=0.700) 
+22 	Train(L=0.442  | A=0.790) 	Valid(L=0.544  | A=0.727) 	Test(L=0.654  | A=0.700) 
+23 	Train(L=0.435  | A=0.797) 	Valid(L=0.533  | A=0.739) 	Test(L=0.626  | A=0.716) 
+24 	Train(L=0.425  | A=0.804) 	Valid(L=0.513  | A=0.754) 	Test(L=0.608  | A=0.711) 	> Best
+25 	Train(L=0.416  | A=0.809) 	Valid(L=0.546  | A=0.723) 	Test(L=0.618  | A=0.727) 
+26 	Train(L=0.406  | A=0.815) 	Valid(L=0.505  | A=0.734) 	Test(L=0.588  | A=0.727) 	> Best
+27 	Train(L=0.398  | A=0.821) 	Valid(L=0.538  | A=0.741) 	Test(L=0.630  | A=0.743) 
+28 	Train(L=0.386  | A=0.827) 	Valid(L=0.510  | A=0.750) 	Test(L=0.600  | A=0.730) 
+29 	Train(L=0.376  | A=0.833) 	Valid(L=0.523  | A=0.750) 	Test(L=0.574  | A=0.743) 
+30 	Train(L=0.367  | A=0.836) 	Valid(L=0.493  | A=0.746) 	Test(L=0.556  | A=0.739) 	> Best
+31 	Train(L=0.359  | A=0.842) 	Valid(L=0.505  | A=0.754) 	Test(L=0.585  | A=0.732) 
+32 	Train(L=0.351  | A=0.846) 	Valid(L=0.490  | A=0.755) 	Test(L=0.614  | A=0.757) 	> Best
+33 	Train(L=0.343  | A=0.850) 	Valid(L=0.500  | A=0.750) 	Test(L=0.569  | A=0.761) 
+34 	Train(L=0.335  | A=0.854) 	Valid(L=0.542  | A=0.759) 	Test(L=0.603  | A=0.739) 
+35 	Train(L=0.326  | A=0.858) 	Valid(L=0.508  | A=0.738) 	Test(L=0.579  | A=0.736) 
+36 	Train(L=0.320  | A=0.862) 	Valid(L=0.501  | A=0.739) 	Test(L=0.620  | A=0.752) 
+37 	Train(L=0.313  | A=0.865) 	Valid(L=0.534  | A=0.748) 	Test(L=0.574  | A=0.757) 
+38 	Train(L=0.308  | A=0.868) 	Valid(L=0.513  | A=0.757) 	Test(L=0.593  | A=0.743) 
+39 	Train(L=0.302  | A=0.870) 	Valid(L=0.557  | A=0.745) 	Test(L=0.610  | A=0.755) 
+40 	Train(L=0.294  | A=0.874) 	Valid(L=0.526  | A=0.741) 	Test(L=0.568  | A=0.754) 
+41 	Train(L=0.290  | A=0.877) 	Valid(L=0.540  | A=0.748) 	Test(L=0.658  | A=0.748) 
+42 	Train(L=0.284  | A=0.879) 	Valid(L=0.573  | A=0.761) 	Test(L=0.670  | A=0.738) 
+>>> Test acc on best model = 0.7571428571428571
