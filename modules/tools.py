@@ -62,8 +62,8 @@ def make_train_xy(sample_list):
         assert sample_list[i].shape == sample_list[i + 1].shape
 
     # add flipped images
-    for i in range(len(sample_list)):
-        sample_list[i] = np.concatenate([sample_list[i], sample_list[i][:, :, :, ::-1]], axis=0)
+    # for i in range(len(sample_list)):
+    #     sample_list[i] = np.concatenate([sample_list[i], sample_list[i][:, :, :, ::-1]], axis=0)
 
     x_list = list()
 

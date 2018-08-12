@@ -103,11 +103,19 @@ class NewCnn(nn.Module):
 
             nn.Conv2d(16, 16, kernel_size=3),  # 42
             nn.ReLU(),
-            nn.MaxPool2d(kernel_size=2, stride=2),  # 21
+
+            nn.Conv2d(16, 16, kernel_size=3),  # 40
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),  # 20
+
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(20 * 20 * 16 * 2, 100),
+            nn.Linear(19 * 19 * 16 * 2, 1000),
+            nn.ReLU(),
+            nn.Dropout(p=.5),
+
+            nn.Linear(1000, 100),
             nn.ReLU(),
             nn.Dropout(p=.5),
 

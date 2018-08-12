@@ -9,7 +9,7 @@ from modules.net import NewCnn
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 cpu_batch_size = 400
-gpu_batch_size = 130
+gpu_batch_size = 115
 learning_rate = 5e-5
 max_loss_diff = 0.04
 min_epochs = 40
