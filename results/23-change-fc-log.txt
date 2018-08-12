@@ -1,0 +1,36 @@
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 23-change-fc 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 23-change-fc 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+1 	Train(L=0.693  | A=0.501) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+2 	Train(L=0.691  | A=0.512) 	Valid(L=0.646  | A=0.643) 	Test(L=0.692  | A=0.545) 	> Best
+3 	Train(L=0.558  | A=0.701) 	Valid(L=0.506  | A=0.720) 	Test(L=0.569  | A=0.704) 	> Best
+4 	Train(L=0.434  | A=0.792) 	Valid(L=0.446  | A=0.775) 	Test(L=0.553  | A=0.696) 	> Best
+5 	Train(L=0.339  | A=0.849) 	Valid(L=0.536  | A=0.795) 	Test(L=0.599  | A=0.730) 
+6 	Train(L=0.271  | A=0.883) 	Valid(L=0.578  | A=0.800) 	Test(L=0.669  | A=0.738) 
+7 	Train(L=0.217  | A=0.909) 	Valid(L=0.725  | A=0.814) 	Test(L=0.834  | A=0.721) 
+8 	Train(L=0.178  | A=0.926) 	Valid(L=0.865  | A=0.787) 	Test(L=0.905  | A=0.723) 
+9 	Train(L=0.149  | A=0.940) 	Valid(L=0.996  | A=0.805) 	Test(L=0.915  | A=0.721) 
+10 	Train(L=0.124  | A=0.950) 	Valid(L=1.090  | A=0.789) 	Test(L=0.942  | A=0.721) 
+11 	Train(L=0.106  | A=0.958) 	Valid(L=1.086  | A=0.798) 	Test(L=1.077  | A=0.730) 
+12 	Train(L=0.092  | A=0.964) 	Valid(L=1.101  | A=0.802) 	Test(L=1.039  | A=0.721) 
+13 	Train(L=0.079  | A=0.969) 	Valid(L=1.305  | A=0.784) 	Test(L=1.186  | A=0.734) 
+14 	Train(L=0.072  | A=0.973) 	Valid(L=1.021  | A=0.800) 	Test(L=1.124  | A=0.716) 
+15 	Train(L=0.062  | A=0.976) 	Valid(L=1.301  | A=0.798) 	Test(L=1.076  | A=0.741) 
+16 	Train(L=0.056  | A=0.978) 	Valid(L=1.265  | A=0.807) 	Test(L=1.142  | A=0.727) 
+17 	Train(L=0.051  | A=0.980) 	Valid(L=1.162  | A=0.798) 	Test(L=1.172  | A=0.723) 
+18 	Train(L=0.047  | A=0.983) 	Valid(L=1.430  | A=0.773) 	Test(L=1.211  | A=0.734) 
+19 	Train(L=0.043  | A=0.984) 	Valid(L=1.279  | A=0.775) 	Test(L=1.097  | A=0.741) 
+20 	Train(L=0.039  | A=0.985) 	Valid(L=1.331  | A=0.786) 	Test(L=1.205  | A=0.730) 
+21 	Train(L=0.038  | A=0.986) 	Valid(L=1.697  | A=0.775) 	Test(L=1.101  | A=0.766) 
+22 	Train(L=0.034  | A=0.987) 	Valid(L=1.580  | A=0.786) 	Test(L=1.065  | A=0.771) 
