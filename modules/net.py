@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from torchvision.models import alexnet
 
 
 class Cnn(nn.Module):
@@ -129,3 +130,31 @@ class NewCnn(nn.Module):
         out2 = out2.view(out2.size(0), -1)
         out = torch.cat((out1, out2), 1)
         return self.fc(out)
+
+
+class TrainedAlexnet(nn.Module):
+    def __init__(self):
+        super(TrainedAlexnet, self).__init__()
+        self.alex = nn.Sequential(*list(alexnet(pretrained=True).children())[:-1])
+        self.fully_connected = nn.Sequential(
+            nn.Linear(256 * 6 * 6 * 2, 4096),
+            nn.ReLU(inplace=True),
+            nn.Dropout(),
+
+            nn.Linear(4096, 4096),
+            nn.ReLU(inplace=True),
+
+            nn.Linear(4096, 2),
+        )
+
+    def forward(self, data):
+        im1 = data[:, 0, :, :].unsqueeze_(1)
+        out1 = self.alex(torch.cat((im1, im1, im1), 1))
+        out1 = out1.view(out1.size(0), -1)
+
+        im2 = data[:, 1, :, :].unsqueeze_(1)
+        out2 = self.alex(torch.cat((im2, im2, im2), 1))
+        out2 = out2.view(out2.size(0), -1)
+
+        out = torch.cat((out1, out2), 1)
+        return self.fully_connected(out)

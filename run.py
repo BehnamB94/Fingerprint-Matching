@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
-from modules.net import NewCnn
+from modules.net import TrainedAlexnet
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
 cpu_batch_size = 400
@@ -15,8 +15,8 @@ max_loss_diff = 0.04
 min_epochs = 40
 max_epochs = 100
 
-IMAGE_ROW = 181
-IMAGE_COL = 181
+IMAGE_ROW = 227
+IMAGE_COL = 227
 VALID_DBs = ['NIST', 'FVC1', 'FVC2', 'FVC3', 'FVC4']
 
 parser = argparse.ArgumentParser()
@@ -47,14 +47,14 @@ print_and_log('\n', ''.join(['#'] * 50),
 # PREPARE DATA
 #######################################################################################
 if args.Dataset == 'NIST':
-    loaded = np.load('dataset/images_181_181.npz')
+    loaded = np.load('dataset/images_{}_{}.npz'.format(IMAGE_ROW, IMAGE_COL))
     sample1 = loaded['sample1'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
     sample2 = loaded['sample2'].reshape((-1, 1, IMAGE_ROW, IMAGE_COL))
     sample_list = [sample1, sample2]
     test_size = 400  # from 2000
     valid_size = 100  # from 2000
 else:  # FVC2002
-    loaded = np.load('dataset/fvc_181_181.npz')
+    loaded = np.load('dataset/fvc_{}_{}.npz'.format(IMAGE_ROW, IMAGE_COL))
     loaded = loaded['DB{}'.format(args.Dataset[-1])]
     sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
     test_size = 10  # from 110
@@ -89,7 +89,7 @@ print_and_log('Data Prepared:\n',
 #######################################################################################
 # LOAD OR CREATE MODEL
 #######################################################################################
-net = NewCnn()
+net = TrainedAlexnet()
 start_epoch = 0
 if args.CONT is not None:
     net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
