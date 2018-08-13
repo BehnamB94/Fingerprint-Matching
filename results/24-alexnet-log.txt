@@ -1,0 +1,32 @@
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
+Data Prepared:
+ 	TRAIN:129600
+ 	VALID:560
+ 	TEST:560
+1 	Train(L=0.345  | A=0.798) 	Valid(L=3.145  | A=0.711) 	Test(L=0.759  | A=0.811) 	> Best
