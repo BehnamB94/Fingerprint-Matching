@@ -99,3 +99,6 @@ Data Prepared:
 22 	Train(L=0.113  | A=0.957) 	Valid(L=0.913  | A=0.795) 	Test(L=1.072  | A=0.720) 
 23 	Train(L=0.101  | A=0.962) 	Valid(L=0.981  | A=0.786) 	Test(L=0.930  | A=0.729) 
 24 	Train(L=0.088  | A=0.967) 	Valid(L=1.000  | A=0.793) 	Test(L=1.271  | A=0.714) 
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 22-net-more-layers 

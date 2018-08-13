@@ -112,15 +112,15 @@ class NewCnn(nn.Module):
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(19 * 19 * 16 * 2, 1000),
+            nn.Linear(19 * 19 * 16 * 2, 128),
             nn.ReLU(),
             nn.Dropout(p=.5),
 
-            nn.Linear(1000, 100),
+            nn.Linear(128, 16),
             nn.ReLU(),
             nn.Dropout(p=.5),
 
-            nn.Linear(100, 2),
+            nn.Linear(16, 2),
         )
 
     def forward(self, data):
