@@ -9,9 +9,13 @@ Data Prepared:
  ################################################## 
 TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
 Data Prepared:
- 	TRAIN:129600
+ 	TRAIN:360
  	VALID:560
  	TEST:560
+1 	Train(L=0.700  | A=0.514) 	Valid(L=1.197  | A=0.500) 	Test(L=1.225  | A=0.500) 	> Best
+2 	Train(L=1.130  | A=0.500) 	Valid(L=0.694  | A=0.504) 	Test(L=0.697  | A=0.509) 	> Best
+3 	Train(L=0.690  | A=0.503) 	Valid(L=0.828  | A=0.500) 	Test(L=0.824  | A=0.500) 
+4 	Train(L=0.826  | A=0.500) 	Valid(L=0.783  | A=0.500) 	Test(L=0.764  | A=0.500) 
 
  ################################################## 
 TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
@@ -19,14 +23,5 @@ Data Prepared:
  	TRAIN:129600
  	VALID:560
  	TEST:560
-
- ################################################## 
-TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
-
- ################################################## 
-TRAIN 	on Dataset: FVC1 	tag: 24-alexnet 
-Data Prepared:
- 	TRAIN:129600
- 	VALID:560
- 	TEST:560
-1 	Train(L=0.345  | A=0.798) 	Valid(L=3.145  | A=0.711) 	Test(L=0.759  | A=0.811) 	> Best
+1 	Train(L=0.289  | A=0.833) 	Valid(L=2.743  | A=0.698) 	Test(L=0.796  | A=0.812) 	> Best
+2 	Train(L=0.001  | A=1.000) 	Valid(L=4.495  | A=0.691) 	Test(L=1.439  | A=0.786) 
