@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchvision.models import alexnet
+from torchvision.models import alexnet, inception_v3
 
 
 class Cnn(nn.Module):
@@ -154,6 +154,25 @@ class TrainedAlexnet(nn.Module):
 
         im2 = data[:, 1, :, :].unsqueeze_(1)
         out2 = self.alex(torch.cat((im2, im2, im2), 1))
+        out2 = out2.view(out2.size(0), -1)
+
+        out = torch.cat((out1, out2), 1)
+        return self.fully_connected(out)
+
+
+class TrainedInception(nn.Module):
+    def __init__(self):
+        super(TrainedInception, self).__init__()
+        self.inception = nn.Sequential(*list(inception_v3(pretrained=True).children())[:-1])
+        self.fully_connected = nn.Linear(2048, 2)
+
+    def forward(self, data):
+        im1 = data[:, 0, :, :].unsqueeze_(1)
+        out1 = self.inception(torch.cat((im1, im1, im1), 1))
+        out1 = out1.view(out1.size(0), -1)
+
+        im2 = data[:, 1, :, :].unsqueeze_(1)
+        out2 = self.inception(torch.cat((im2, im2, im2), 1))
         out2 = out2.view(out2.size(0), -1)
 
         out = torch.cat((out1, out2), 1)
