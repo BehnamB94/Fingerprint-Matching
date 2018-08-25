@@ -177,3 +177,43 @@ class TrainedInception(nn.Module):
 
         out = torch.cat((out1, out2), 1)
         return self.fully_connected(out)
+
+
+class Cnn4(nn.Module):
+    def __init__(self):
+        super(Cnn4, self).__init__()
+        self.convolution = nn.Sequential(
+            nn.Conv2d(1, 48, kernel_size=5, stride=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+
+            nn.Conv2d(48, 128, kernel_size=5, stride=1, groups=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+
+            nn.Conv2d(128, 192, kernel_size=3, stride=1),
+            nn.ReLU(),
+            nn.Conv2d(192, 128, kernel_size=3, stride=1, groups=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=2),
+        )
+
+        self.fc = nn.Sequential(
+            nn.Linear(14 * 14 * 128 * 2, 2048),
+            nn.ReLU(),
+            nn.Dropout(p=.5),
+
+#            nn.Linear(25088 * 2, 2048),
+#            nn.ReLU(),
+#            nn.Dropout(p=.5),
+
+            nn.Linear(2048, 2),
+        )
+
+    def forward(self, data):
+        out1 = self.convolution(data[:, 0, :, :].unsqueeze_(1))
+        out2 = self.convolution(data[:, 1, :, :].unsqueeze_(1))
+        out1 = out1.view(out1.size(0), -1)
+        out2 = out2.view(out2.size(0), -1)
+        out = torch.cat((out1, out2), 1)
+        return self.fc(out)

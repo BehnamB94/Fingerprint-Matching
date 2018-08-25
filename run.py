@@ -5,12 +5,20 @@ import torch
 from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
-from modules.net import TrainedInception
+from modules.net import Cnn4
+from torch.optim.lr_scheduler import StepLR
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-cpu_batch_size = 400
+cpu_batch_size = 2
 gpu_batch_size = 115
-learning_rate = 5e-5
+
+learning_rate = 1e-2
+momentum = 0.9
+weight_decay = 0.0005
+step_size=220
+gamma=0.1
+
+
 max_loss_diff = 0.04
 min_epochs = 40
 max_epochs = 100
@@ -56,7 +64,7 @@ if args.Dataset == 'NIST':
 else:  # FVC2002
     loaded = np.load('dataset/fvc_{}_{}.npz'.format(IMAGE_ROW, IMAGE_COL))
     loaded = loaded['DB{}'.format(args.Dataset[-1])]
-    sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL) for i in range(8)]
+    sample_list = [loaded[:, i, :, :].reshape(-1, 1, IMAGE_ROW, IMAGE_COL)[:21] for i in range(8)]
     test_size = 10  # from 110
     valid_size = 10  # from 110
 
@@ -89,13 +97,14 @@ print_and_log('Data Prepared:\n',
 #######################################################################################
 # LOAD OR CREATE MODEL
 #######################################################################################
-net = TrainedInception()
+net = Cnn4()
 start_epoch = 0
 if args.CONT is not None:
     net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
     start_epoch = args.CONT
 loss_fn = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
+optimizer = torch.optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
+scheduler = StepLR(optimizer, step_size=step_size, gamma=gamma)
 
 if args.GPU: net = net.cuda()
 
