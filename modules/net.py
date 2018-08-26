@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchvision.models import alexnet, inception_v3
+from torchvision.models import alexnet, inception_v3, densenet121
 
 
 class Cnn(nn.Module):
@@ -132,7 +132,7 @@ class NewCnn(nn.Module):
         return self.fc(out)
 
 
-class TrainedAlexnet(nn.Module):
+class TrainedAlexnet(nn.Module):  # 227
     def __init__(self):
         super(TrainedAlexnet, self).__init__()
         self.alex = nn.Sequential(*list(alexnet(pretrained=True).children())[:-1])
@@ -160,7 +160,7 @@ class TrainedAlexnet(nn.Module):
         return self.fully_connected(out)
 
 
-class TrainedInception(nn.Module):
+class TrainedInception(nn.Module):  # 299
     def __init__(self):
         super(TrainedInception, self).__init__()
         self.inception = nn.Sequential(*list(inception_v3(pretrained=True).children())[:-1])
@@ -179,11 +179,30 @@ class TrainedInception(nn.Module):
         return self.fully_connected(out)
 
 
+class TrainedDenseNet(nn.Module):  # 224
+    def __init__(self):
+        super(TrainedDenseNet, self).__init__()
+        self.dense_net = nn.Sequential(*list(densenet121(pretrained=True).children())[:-1])
+        self.fully_connected = nn.Linear(100352, 2)
+
+    def forward(self, data):
+        im1 = data[:, 0, :, :].unsqueeze_(1)
+        out1 = self.dense_net(torch.cat((im1, im1, im1), 1))
+        out1 = out1.view(out1.size(0), -1)
+
+        im2 = data[:, 1, :, :].unsqueeze_(1)
+        out2 = self.dense_net(torch.cat((im2, im2, im2), 1))
+        out2 = out2.view(out2.size(0), -1)
+
+        out = torch.cat((out1, out2), 1)
+        return self.fully_connected(out)
+
+
 class Cnn4(nn.Module):
     def __init__(self):
         super(Cnn4, self).__init__()
         self.convolution = nn.Sequential(
-            nn.Conv2d(1, 48, kernel_size=5, stride=2),
+            nn.Conv2d(1, 48, kernel_size=11, stride=2),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=3, stride=2),
 
@@ -199,15 +218,15 @@ class Cnn4(nn.Module):
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(14 * 14 * 128 * 2, 2048),
+            nn.Linear(6 * 6 * 128 * 2, 2048),
             nn.ReLU(),
             nn.Dropout(p=.5),
 
-#            nn.Linear(25088 * 2, 2048),
-#            nn.ReLU(),
-#            nn.Dropout(p=.5),
+            nn.Linear(2048, 256),
+            nn.ReLU(),
+            nn.Dropout(p=.5),
 
-            nn.Linear(2048, 2),
+            nn.Linear(256, 2),
         )
 
     def forward(self, data):

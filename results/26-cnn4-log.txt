@@ -1,0 +1,22 @@
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 26-cnn4 
+Data Prepared:
+ 	TRAIN:43200
+ 	VALID:560
+ 	TEST:560
+1 	Train(L=0.693  | A=0.500) 	Valid(L=0.693  | A=0.500) 	Test(L=0.692  | A=0.500) 	> Best
+2 	Train(L=0.693  | A=0.498) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.498) 
+3 	Train(L=0.693  | A=0.505) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+4 	Train(L=0.693  | A=0.496) 	Valid(L=0.692  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+5 	Train(L=0.693  | A=0.502) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+6 	Train(L=0.693  | A=0.504) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+7 	Train(L=0.693  | A=0.503) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+8 	Train(L=0.693  | A=0.509) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+9 	Train(L=0.693  | A=0.513) 	Valid(L=0.691  | A=0.509) 	Test(L=0.693  | A=0.502) 	> Best
+10 	Train(L=0.692  | A=0.535) 	Valid(L=0.687  | A=0.629) 	Test(L=0.690  | A=0.555) 	> Best
+11 	Train(L=0.681  | A=0.570) 	Valid(L=0.643  | A=0.646) 	Test(L=0.664  | A=0.561) 	> Best
+12 	Train(L=0.594  | A=0.671) 	Valid(L=0.592  | A=0.661) 	Test(L=0.632  | A=0.643) 	> Best
+13 	Train(L=0.489  | A=0.757) 	Valid(L=0.551  | A=0.693) 	Test(L=0.626  | A=0.636) 	> Best
+14 	Train(L=0.429  | A=0.799) 	Valid(L=0.637  | A=0.648) 	Test(L=0.708  | A=0.634) 
+15 	Train(L=0.352  | A=0.843) 	Valid(L=0.918  | A=0.655) 	Test(L=0.756  | A=0.571) 
