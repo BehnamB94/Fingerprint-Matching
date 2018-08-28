@@ -218,15 +218,15 @@ class Cnn4(nn.Module):
         )
 
         self.fc = nn.Sequential(
-            nn.Linear(6 * 6 * 128 * 2, 2048),
+            nn.Linear(6 * 6 * 128 * 2, 9216),
             nn.ReLU(),
             nn.Dropout(p=.5),
 
-            nn.Linear(2048, 256),
+            nn.Linear(9216, 512),
             nn.ReLU(),
             nn.Dropout(p=.5),
 
-            nn.Linear(256, 2),
+            nn.Linear(512, 2),
         )
 
     def forward(self, data):

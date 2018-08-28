@@ -9,7 +9,7 @@ from modules.net import Cnn4
 from torch.optim.lr_scheduler import StepLR
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-cpu_batch_size = 256
+cpu_batch_size = 128
 gpu_batch_size = 115
 
 learning_rate = 1e-2
@@ -127,6 +127,7 @@ if not args.TEST:
         test_correct = 0
 
         net = net.train()
+        scheduler.step()
         for features, labels in train_loader:  # For each batch, do:
             features = torch.autograd.Variable(features.float())
             labels = torch.autograd.Variable(labels.long())

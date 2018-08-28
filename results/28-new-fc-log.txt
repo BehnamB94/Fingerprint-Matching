@@ -1,0 +1,17 @@
+
+ ################################################## 
+TRAIN 	on Dataset: FVC1 	tag: 28-new-fc 
+Data Prepared:
+ 	TRAIN:10080
+ 	VALID:560
+ 	TEST:560
+1 	Train(L=0.693  | A=0.493) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.502) 	> Best
+2 	Train(L=0.693  | A=0.501) 	Valid(L=0.693  | A=0.500) 	Test(L=0.694  | A=0.500) 	> Best
+3 	Train(L=0.693  | A=0.502) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+4 	Train(L=0.693  | A=0.499) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+5 	Train(L=0.693  | A=0.499) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+6 	Train(L=0.693  | A=0.494) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+7 	Train(L=0.693  | A=0.506) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 	> Best
+8 	Train(L=0.693  | A=0.497) 	Valid(L=0.693  | A=0.607) 	Test(L=0.693  | A=0.520) 
+9 	Train(L=0.693  | A=0.494) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
+10 	Train(L=0.693  | A=0.501) 	Valid(L=0.693  | A=0.500) 	Test(L=0.693  | A=0.500) 
