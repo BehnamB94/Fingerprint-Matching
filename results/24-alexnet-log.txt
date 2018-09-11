@@ -7,3 +7,11 @@ Data Prepared:
 1 	Train(L=0.345  | A=0.798) 	Valid(L=3.145  | A=0.711) 	Test(L=0.759  | A=0.811) 	> Best
 2 	Train(L=0.002  | A=1.000) 	Valid(L=4.009  | A=0.718) 	Test(L=0.868  | A=0.827) 
 3 	Train(L=0.000  | A=1.000) 	Valid(L=4.721  | A=0.700) 	Test(L=1.274  | A=0.809) 
+
+ ##################################################
+TEST 	on Dataset: FVC1 	tag: 24-alexnet 
+Data Prepared:
+   	TEST:560
+>>> Test acc on best model = 0.8107142857142857
+FNMR= 11.428571428571429 %
+FMR= 26.428571428571427 %
