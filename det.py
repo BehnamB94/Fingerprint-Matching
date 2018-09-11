@@ -42,10 +42,11 @@ def plot_dstrb(labels, diffs):
     plt.show()
 
 
-alex_lbl, alex_diffs = get_lbl_diff('results/24-alexnet-diff.csv')
-plot_dstrb(alex_lbl, alex_diffs)
-# alex_fnmr, alex_fmr = get_det(alex_lbl, alex_diffs)
-# plt.plot(alex_fnmr, alex_fmr)
-# plt.xlabel('FNMR')
-# plt.ylabel('FMR')
-# plt.show()
+# alex_lbl, alex_diffs = get_lbl_diff('results/24-alexnet-diff.csv')
+alex_lbl, alex_diffs = get_lbl_diff('results/19-with-16-features-diff.csv')
+# plot_dstrb(alex_lbl, alex_diffs)
+alex_fnmr, alex_fmr = get_det(alex_lbl, alex_diffs)
+plt.plot(alex_fnmr, alex_fmr)
+plt.xlabel('FNMR')
+plt.ylabel('FMR')
+plt.show()
