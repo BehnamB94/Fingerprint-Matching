@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
-from modules.net import TrainedAlexnet
+from modules.net import CnnRun19
 from torch.optim.lr_scheduler import StepLR
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
@@ -22,8 +22,8 @@ max_loss_diff = 0.04
 min_epochs = 40
 max_epochs = 100
 
-IMAGE_ROW = 227
-IMAGE_COL = 227
+IMAGE_ROW = 181
+IMAGE_COL = 181
 VALID_DBs = ['NIST', 'FVC1', 'FVC2', 'FVC3', 'FVC4']
 
 parser = argparse.ArgumentParser()
@@ -96,7 +96,7 @@ print_and_log('Data Prepared:\n',
 #######################################################################################
 # LOAD OR CREATE MODEL
 #######################################################################################
-net = TrainedAlexnet()
+net = CnnRun19()
 start_epoch = 0
 if args.CONT is not None:
     net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
@@ -206,7 +206,7 @@ if not args.TEST:
 #######################################################################################
 test_loader = DataLoader(ImageDataset(test_x, test_y), batch_size=batch_size, shuffle=True)
 
-net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))
+net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG), map_location='cpu'))
 net = net.eval()
 test_correct = 0
 true_list = list()
@@ -235,7 +235,7 @@ plot_hist(true_list, false_list, bin_num=100, tag=args.TAG)
 
 import csv
 
-with open('results/24-alexnet-diff.csv', 'w') as csv_file:
+with open('results/19-with-16-features-diff.csv', 'w') as csv_file:
     wr = csv.writer(csv_file)
     wr.writerow(['lbl', 'diff'])
     for lbl, diff in zip(csv_label_list, csv_diff_list):

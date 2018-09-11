@@ -99,3 +99,16 @@ Data Prepared:
 41 	Train(L=0.290  | A=0.877) 	Valid(L=0.540  | A=0.748) 	Test(L=0.658  | A=0.748) 
 42 	Train(L=0.284  | A=0.879) 	Valid(L=0.573  | A=0.761) 	Test(L=0.670  | A=0.738) 
 >>> Test acc on best model = 0.7571428571428571
+
+ ################################################## 
+TEST 	on Dataset: FVC1 	tag: 19-with-16-features 
+Data Prepared:
+   	TEST:560
+
+ ################################################## 
+TEST 	on Dataset: FVC1 	tag: 19-with-16-features 
+Data Prepared:
+   	TEST:560
+>>> Test acc on best model = 0.5178571428571429
+FNMR= 0.7142857142857143 %
+FMR= 95.71428571428571 %
