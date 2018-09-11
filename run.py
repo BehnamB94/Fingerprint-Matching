@@ -5,11 +5,11 @@ import torch
 from torch.utils.data import DataLoader
 
 from modules.dataset import ImageDataset
-from modules.net import Cnn4
+from modules.net import TrainedDenseNet
 from torch.optim.lr_scheduler import StepLR
 from modules.tools import plot, make_xy, make_train_xy, plot_hist
 
-cpu_batch_size = 128
+cpu_batch_size = 64
 gpu_batch_size = 115
 
 learning_rate = 1e-2
@@ -97,7 +97,7 @@ print_and_log('Data Prepared:\n',
 #######################################################################################
 # LOAD OR CREATE MODEL
 #######################################################################################
-net = Cnn4()
+net = TrainedDenseNet()
 start_epoch = 0
 if args.CONT is not None:
     net.load_state_dict(torch.load('results/{}-model.pkl'.format(args.TAG)))

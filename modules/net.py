@@ -183,7 +183,7 @@ class TrainedDenseNet(nn.Module):  # 224
     def __init__(self):
         super(TrainedDenseNet, self).__init__()
         self.dense_net = nn.Sequential(*list(densenet121(pretrained=True).children())[:-1])
-        self.fully_connected = nn.Linear(100352, 2)
+        self.fully_connected = nn.Linear(51200, 2)
 
     def forward(self, data):
         im1 = data[:, 0, :, :].unsqueeze_(1)
